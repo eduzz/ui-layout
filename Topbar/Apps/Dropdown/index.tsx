@@ -1,6 +1,9 @@
-import { HTMLAttributes, memo, useEffect } from 'react';
+import { HTMLAttributes, memo, useCallback, useEffect } from 'react';
+
+import { useContextSelector } from 'use-context-selector';
 
 import { TopbarApplication } from '..';
+import LayoutContext from '../../../context';
 import useBoolean from '../../../hooks/useBoolean';
 import IconClose from '../../../Icons/Close';
 import IconFullscreen from '../../../Icons/Fullscreen';
@@ -15,6 +18,13 @@ export type AppsDropdownProps = HTMLAttributes<HTMLDivElement> & {
 
 const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications, opened, onClose, ...rest }) => {
   const [expanded, toggleExpanded, , closeExpanded] = useBoolean();
+  const mode = useContextSelector(LayoutContext, context => context.layout.mode);
+
+  const addModeToSearchParams = useCallback((url: string, currentMode: 'dark' | 'light') => {
+    const newURL = new URL(url);
+    newURL.searchParams.set('eduzzLayoutMode', currentMode);
+    return newURL.href;
+  }, []);
 
   useEffect(() => {
     const oldValue = document.body.style.overflow;
@@ -70,7 +80,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
                 isCurrent && 'uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.06]'
               )}
               key={app.application}
-              href={isCurrent ? undefined : app.url}
+              href={isCurrent ? undefined : addModeToSearchParams(app.url, mode)}
               rel='noopener noreferrer'
               target='_blank'
               onClick={isCurrent ? onClose : undefined}

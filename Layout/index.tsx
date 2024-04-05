@@ -2,8 +2,8 @@ import { HTMLAttributes, useState, ReactNode, useCallback, useMemo, MemoExoticCo
 
 import Content from '../Content';
 import LayoutContext, { LayoutContextType } from '../context';
-import useApplyMode from '../hooks/useApplyMode';
 import useBoolean from '../hooks/useBoolean';
+import useMode from '../hooks/useMode';
 import Sidebar from '../Sidebar';
 import Topbar from '../Topbar';
 import cx from '../utils/cx';
@@ -21,7 +21,6 @@ export type LayoutProps = HTMLAttributes<HTMLDivElement> & {
 };
 
 const Layout = ({ className, children, primaryColor, secondaryColor, mode, onModeChange, ...rest }: LayoutProps) => {
-  const [currentMode, setCurrentMode] = useState<'light' | 'dark'>(() => mode || 'light');
   const [hasTopbar, setHasTopbar] = useState(false);
   const [hasSidebar, setHasSidebar] = useState(false);
   const [hasUserMenu, setHasUserMenu] = useState(false);
@@ -30,15 +29,7 @@ const Layout = ({ className, children, primaryColor, secondaryColor, mode, onMod
 
   const [userMenuOpened, toogleUserMenuOpened, trueUserMenuOpened, falseUserMenuOpened] = useBoolean(false);
   const [sidebarOpened, toogleSidebarOpened, trueSidebarOpened, falseSidebarOpened] = useBoolean(false);
-  useApplyMode(currentMode, onModeChange);
-
-  const toggleTheme = useCallback(() => {
-    setCurrentMode(current => {
-      return current === 'dark' ? 'light' : 'dark';
-    });
-
-    return () => setCurrentMode(mode || 'light');
-  }, []);
+  const [currentMode, toggleMode] = useMode(mode, onModeChange);
 
   const registerTopbar = useCallback(() => {
     setHasTopbar(true);
@@ -67,7 +58,7 @@ const Layout = ({ className, children, primaryColor, secondaryColor, mode, onMod
     () => ({
       layout: {
         mode: currentMode,
-        toggle: toggleTheme
+        toggle: toggleMode
       },
       topbar: {
         exists: hasTopbar,
@@ -114,7 +105,7 @@ const Layout = ({ className, children, primaryColor, secondaryColor, mode, onMod
       userMenuContainer,
       userMenuOpened,
       currentMode,
-      toggleTheme
+      toggleMode
     ]
   );
 

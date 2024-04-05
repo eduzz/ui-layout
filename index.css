@@ -31,3 +31,6 @@
 html, body {
   @apply uizz-layout-font-sans uizz-layout-text-base uizz-layout-m-0
 }
+html:has(body[data-eduzz-theme="dark"]) {
+  color-scheme: dark;
+}
