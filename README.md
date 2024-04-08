@@ -129,6 +129,7 @@ function MyComponent() {
 | prop               | tipo     | obrigatório | padrão | descrição                                                   |
 |--------------------|----------|-------------|--------|-------------------------------------------------------------|
 | mode               | `'light' \| 'dark'`    | `false`     | `'light'`      |  Modo (Dark ou Light mode)                                     |
+| acceptModeBySearchParam               | `boolean`    | `false`     | `false`      |  Aceita receber `?eduzzLayoutMode=dark` na URL por exemplo, para definir o `mode`                                     |
 | onModeChange         | `(newMode: 'light' \| 'dark') => void`    | `false`     | -      | Função a ser executada toda vez que houver uma mudança de modo.                           |
 
 ### Topbar props

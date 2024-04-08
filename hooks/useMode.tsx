@@ -2,11 +2,33 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { getLocalStorageInstance } from '../utils/localStorage';
 
-export default function useMode(mode?: 'dark' | 'light', onModeChange?: (newMode: 'light' | 'dark') => void) {
+export type PossibleModes = 'dark' | 'light';
+
+export default function useMode(
+  mode?: PossibleModes,
+  acceptModeBySearchParam?: boolean,
+  onModeChange?: (newMode: PossibleModes) => void
+) {
   const localStorageInstance = getLocalStorageInstance();
 
   const [currentMode, setCurrentMode] = useState<'light' | 'dark'>(() => {
-    const storagedMode = localStorageInstance?.getItem('eduzz-ui-mode') as 'dark' | 'light' | undefined;
+    const getSearchParamsMode = (searchParamsAllowed?: boolean) => {
+      if (!searchParamsAllowed) {
+        return undefined;
+      }
+
+      const currentUrl = new URL(window.location.href);
+      const searchParamsMode = currentUrl.searchParams.get('eduzzLayoutMode') as PossibleModes | undefined;
+      return searchParamsMode;
+    };
+
+    const searchParamsMode = getSearchParamsMode(acceptModeBySearchParam);
+
+    if (searchParamsMode) {
+      return searchParamsMode;
+    }
+
+    const storagedMode = localStorageInstance?.getItem('eduzz-ui-mode') as PossibleModes | undefined;
 
     if (!storagedMode) {
       return mode || 'light';
@@ -23,7 +45,7 @@ export default function useMode(mode?: 'dark' | 'light', onModeChange?: (newMode
     return () => setCurrentMode(mode || 'light');
   }, []);
 
-  const applyModeChange = useCallback((desiredTheme: 'light' | 'dark') => {
+  const applyModeChange = useCallback((desiredTheme: PossibleModes) => {
     if (!document?.body) {
       return;
     }
