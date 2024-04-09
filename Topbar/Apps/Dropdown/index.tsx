@@ -22,7 +22,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
 
   const addModeToSearchParams = useCallback((url: string, currentMode: 'dark' | 'light') => {
     const newURL = new URL(url);
-    newURL.searchParams.set('eduzzLayoutMode', currentMode);
+    newURL.searchParams.set('eduzzMode', currentMode);
     return newURL.href;
   }, []);
 

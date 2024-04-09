@@ -18,7 +18,7 @@ export default function useMode(
       }
 
       const currentUrl = new URL(window.location.href);
-      const searchParamsMode = currentUrl.searchParams.get('eduzzLayoutMode') as PossibleModes | undefined;
+      const searchParamsMode = currentUrl.searchParams.get('eduzzMode') as PossibleModes | undefined;
       return searchParamsMode;
     };
 
