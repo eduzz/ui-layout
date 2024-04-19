@@ -19,7 +19,7 @@ import UserMenuGroup from './UserMenu/ItemGroup';
 import LayoutContext from '../context';
 import IconClose from '../Icons/Close';
 import IconMenu from '../Icons/Menu';
-import cx from '../utils/cx';
+import { cn } from '../utils/cn';
 import nestedComponent from '../utils/nestedComponent';
 
 import './style.css';
@@ -109,7 +109,7 @@ const Topbar = memo<TopbarProps>(
               />
 
               {!!user?.tag && (
-                <p className={cx('eduzz-ui-layout-topbar-tag', `eduzz-ui-layout-topbar-tag-${user.tag}`)}>{user.tag}</p>
+                <p className={cn('eduzz-ui-layout-topbar-tag', `eduzz-ui-layout-topbar-tag-${user.tag}`)}>{user.tag}</p>
               )}
             </div>
 

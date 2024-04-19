@@ -2,7 +2,7 @@ import { ReactNode, Suspense, useMemo, useState } from 'react';
 
 import AppLoaderContext, { AppLoaderContextValue } from './context';
 import Logo from './Logo';
-import cx from '../utils/cx';
+import { cn } from '../utils/cn';
 
 export type AppLoaderProps = {
   children: ReactNode;
@@ -38,13 +38,13 @@ const AppLoader = ({ children, logo, logoDarkMode }: AppLoaderProps) => {
       </AppLoaderContext.Provider>
 
       <section
-        className={cx(
+        className={cn(
           'uizz-layout-pointer-events-none uizz-layout-fixed uizz-layout-inset-0 uizz-layout-z-[2147483002] uizz-layout-flex uizz-layout-animate-fadeOut uizz-layout-items-center uizz-layout-justify-center uizz-layout-bg-surface-default/[0.32] uizz-layout-backdrop-blur',
           { '!uizz-layout-pointer-events-auto !uizz-layout-animate-fadeIn': show }
         )}
       >
         <div
-          className={cx(
+          className={cn(
             'uizz-layout-mt-[-150vh] uizz-layout-flex uizz-layout-w-[200px] uizz-layout-flex-col uizz-layout-items-center uizz-layout-justify-center uizz-layout-transition-[0s,width] uizz-layout-duration-[0.5s]',
             {
               '!uizz-layout-mt-0': show,

@@ -4,7 +4,7 @@ import { useContext } from 'use-context-selector';
 
 import Badge from '../../Badge';
 import Tooltip from '../../Tooltip';
-import cx from '../../utils/cx';
+import { cn } from '../../utils/cn';
 import TopbarActionsContext from '../Actions/context';
 
 export type ActionProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -32,7 +32,7 @@ const Action = forwardRef<HTMLDivElement, ActionProps>(
 
     return (
       <div
-        className={cx('[&_.anticon]:uizz-layout-align-text-bottom [&_.anticon]:uizz-layout-text-[20px]', className)}
+        className={cn('[&_.anticon]:uizz-layout-align-text-bottom [&_.anticon]:uizz-layout-text-[20px]', className)}
         onClick={onClick}
         {...rest}
         ref={ref}
@@ -40,7 +40,7 @@ const Action = forwardRef<HTMLDivElement, ActionProps>(
         <Tooltip title={tooltip}>
           <Badge count={badgeCount === 0 ? undefined : badgeCount} dot={badgeCount ? false : badgeDot}>
             <div
-              className={cx(
+              className={cn(
                 'uizz-layout-mt-0.5 uizz-layout-box-border uizz-layout-flex uizz-layout-h-10 uizz-layout-min-w-[40px] uizz-layout-cursor-pointer uizz-layout-select-none uizz-layout-items-center uizz-layout-justify-center uizz-layout-gap-2 uizz-layout-rounded-[20px] uizz-layout-px-2 uizz-layout-py-0 uizz-layout-text-center uizz-layout-transition hover:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08]',
                 { 'uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.08]': active }
               )}

@@ -13,7 +13,7 @@ import { useContextSelector } from 'use-context-selector';
 import LayoutContext from '../../context';
 import IconSearch from '../../Icons/Search';
 import Portal from '../../Portal';
-import cx from '../../utils/cx';
+import { cn } from '../../utils/cn';
 
 export interface TopbarSearchProps {
   status?: '' | 'warning' | 'error';
@@ -89,7 +89,7 @@ const TopbarSearch = ({
         <IconSearch size={20} />
         <input
           ref={inputRef}
-          className={cx(
+          className={cn(
             '[&:focus+div]:uizz-layout-outline-disabled uizz-layout-h-10 uizz-layout-flex-1 uizz-layout-border-none uizz-layout-bg-transparent uizz-layout-text-base uizz-layout-text-content-title focus-visible:uizz-layout-outline-none [&:focus+div]:uizz-layout-border-[var(--eduzz-theme-primary)] [&:hover+div]:uizz-layout-border-[var(--eduzz-theme-primary)]',
             {
               '[&+div]:!uizz-layout-border-red-500 [&:focus+div]:!uizz-layout-outline-red-200 [&:hover+div]:!uizz-layout-border-red-500':

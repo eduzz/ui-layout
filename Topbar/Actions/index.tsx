@@ -6,7 +6,7 @@ import TopbarActionsContext, { TopbarActionsContextType } from './context';
 import useBoolean from '../../hooks/useBoolean';
 import useClickOutside from '../../hooks/useClickOutside';
 import IconChevronLeft from '../../Icons/ChevronLeft';
-import cx from '../../utils/cx';
+import { cn } from '../../utils/cn';
 import Action from '../Action';
 import TopbarContext from '../context';
 
@@ -37,7 +37,7 @@ const Actions = ({ children }: ActionsProps) => {
   return (
     <div
       ref={ref}
-      className={cx('eduzz-ui-layout-topbar-actions', {
+      className={cn('eduzz-ui-layout-topbar-actions', {
         '--eduzz-ui-layout-enabled': actions.length > 2,
         '--eduzz-ui-layout-has-user': hasUser,
         '--eduzz-ui-layout-expanded': expanded
@@ -48,7 +48,7 @@ const Actions = ({ children }: ActionsProps) => {
           className='eduzz-ui-layout-topbar-actions-content-expand'
           badgeCount={expanded ? 0 : badgeCount}
           badgeDot={expanded ? false : badgeDot}
-          icon={<IconChevronLeft size={19} className={cx({ 'rotate-180': expanded })} />}
+          icon={<IconChevronLeft size={19} className={cn({ 'rotate-180': expanded })} />}
           onClick={toggleExpanded}
         />
         <TopbarActionsContext.Provider value={registerAction}>

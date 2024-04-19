@@ -48,17 +48,20 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
     return () => setCurrentMode(mode || 'light');
   }, []);
 
-  const applyModeChange = useCallback((desiredTheme: PossibleModes) => {
-    if (!document?.body) {
-      return;
-    }
+  const applyModeChange = useCallback(
+    (desiredTheme: PossibleModes) => {
+      if (!document?.body) {
+        return;
+      }
 
-    document.body.setAttribute('data-eduzz-theme', desiredTheme);
+      document.body.setAttribute('data-eduzz-theme', desiredTheme);
 
-    if (persistMode) {
-      localStorageInstance?.setItem('eduzz-ui-mode', desiredTheme);
-    }
-  }, []);
+      if (persistMode) {
+        localStorageInstance?.setItem('eduzz-ui-mode', desiredTheme);
+      }
+    },
+    [localStorageInstance, persistMode]
+  );
 
   useEffect(() => {
     applyModeChange(currentMode);
@@ -66,7 +69,7 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
     if (onModeChange) {
       onModeChange(currentMode);
     }
-  }, [currentMode]);
+  }, [applyModeChange, currentMode, onModeChange]);
 
   return [currentMode, toggleMode] as const;
 }

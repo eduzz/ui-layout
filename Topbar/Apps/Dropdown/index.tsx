@@ -7,7 +7,7 @@ import LayoutContext from '../../../context';
 import useBoolean from '../../../hooks/useBoolean';
 import IconClose from '../../../Icons/Close';
 import IconFullscreen from '../../../Icons/Fullscreen';
-import cx from '../../../utils/cx';
+import { cn } from '../../../utils/cn';
 
 export type AppsDropdownProps = HTMLAttributes<HTMLDivElement> & {
   currentApplication: string | undefined;
@@ -43,7 +43,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
 
   return (
     <div
-      className={cx(
+      className={cn(
         'uizz-layout-group/apps uizz-layout-invisible uizz-layout-fixed uizz-layout-left-0 uizz-layout-top-[var(--eduzz-ui-layout-topbar-height-rem)] uizz-layout-z-[105] uizz-layout-box-border uizz-layout-max-h-[calc(100vh-var(--eduzz-ui-layout-topbar-height-rem))] uizz-layout-w-full uizz-layout-select-none uizz-layout-overflow-y-auto uizz-layout-rounded-[0_0_0.5rem_0.5rem] uizz-layout-bg-surface-default uizz-layout-shadow-[0px_8px_24px_rgb(var(--eduzz-ui-layout-content-title)_/_0.16)] sm:uizz-layout-left-2 sm:uizz-layout-w-[var(--eduzz-ui-layout-topbar-app-dropdown-width-rem)]',
         {
           '--opened !uizz-layout-visible': opened,
@@ -75,7 +75,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
 
           return (
             <a
-              className={cx(
+              className={cn(
                 'uizz-layout-box-border uizz-layout-block uizz-layout-w-full uizz-layout-cursor-pointer uizz-layout-grid-cols-[2rem_1fr] uizz-layout-grid-rows-[1.5rem_auto] uizz-layout-gap-1 uizz-layout-rounded uizz-layout-border-gray-200 uizz-layout-px-2  uizz-layout-py-4 uizz-layout-text-inherit uizz-layout-no-underline visited:uizz-layout-text-inherit hover:uizz-layout-bg-content-title/[0.03] hover:uizz-layout-text-inherit group-[.--expanded]/apps:uizz-layout-grid group-[.--expanded]/apps:uizz-layout-border-b group-[.--expanded]/apps:uizz-layout-p-4 dark:uizz-layout-border-neutral-800 dark:hover:uizz-layout-bg-content-title/[0.06] sm:uizz-layout-grid-cols-[4rem_1fr] sm:group-[.--expanded]/apps:uizz-layout-border',
                 isCurrent && 'uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.06]'
               )}

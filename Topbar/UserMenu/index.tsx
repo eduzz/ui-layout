@@ -4,8 +4,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import LayoutContext from '../../context';
 import Portal from '../../Portal';
-import cx from '../../utils/cx';
-
+import { cn } from '../../utils/cn';
 import './style.css';
 
 export type UserMenuProps = React.HTMLAttributes<HTMLDivElement> & {
@@ -26,7 +25,7 @@ const UserMenu = ({ children, className, ...rest }: UserMenuProps) => {
 
   return (
     <Portal target={container}>
-      <div {...rest} className={cx(className, 'eduzz-ui-layout-topbar-user-menu', opened && '--opened')}>
+      <div {...rest} className={cn(className, 'eduzz-ui-layout-topbar-user-menu', opened && '--opened')}>
         {children}
       </div>
     </Portal>

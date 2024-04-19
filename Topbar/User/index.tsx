@@ -7,7 +7,7 @@ import LayoutContext from '../../context';
 import useClickOutside from '../../hooks/useClickOutside';
 import useEscapeKey from '../../hooks/useEscapeKey';
 import IconCaretDown from '../../Icons/CaretDown';
-import cx from '../../utils/cx';
+import { cn } from '../../utils/cn';
 import Action from '../Action';
 import TopbarContext from '../context';
 
@@ -31,7 +31,7 @@ const User = memo(() => {
   return (
     <div
       ref={wrapperMenuUser}
-      className={cx('uizz-layout-pointer-events-none uizz-layout-relative uizz-layout-z-[1100] uizz-layout-ml-2', {
+      className={cn('uizz-layout-pointer-events-none uizz-layout-relative uizz-layout-z-[1100] uizz-layout-ml-2', {
         '!uizz-layout-pointer-events-auto': hasMenu
       })}
     >
@@ -43,7 +43,7 @@ const User = memo(() => {
           hasMenu && (
             <IconCaretDown
               size={16}
-              className={cx('uizz-layout-hidden  md:uizz-layout-inline-block', { 'rotate-180': opened })}
+              className={cn('uizz-layout-hidden  md:uizz-layout-inline-block', { 'rotate-180': opened })}
             />
           )
         }

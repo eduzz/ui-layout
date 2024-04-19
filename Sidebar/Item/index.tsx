@@ -4,7 +4,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import IconBullet from '../../Icons/Bullet';
 import IconExternalLink from '../../Icons/ExternalLink';
-import cx from '../../utils/cx';
+import { cn } from '../../utils/cn';
 import SidebarContext from '../context';
 import SidebarGroupContext from '../Group/context';
 
@@ -48,7 +48,7 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
         ref,
         to,
         tabIndex: tabIndex ?? 1,
-        className: cx(
+        className: cn(
           className,
           'uizz-layout-group/menu uizz-layout-mr-[5px] uizz-layout-block uizz-layout-w-full uizz-layout-select-none uizz-layout-rounded-br-[50px] uizz-layout-rounded-tr-[50px] uizz-layout-text-inherit uizz-layout-outline-none uizz-layout-outline-0 hover:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08] hover:uizz-layout-text-inherit hover:uizz-layout-outline-none focus-visible:uizz-layout-bg-content-title/[0.03] dark:focus-visible:uizz-layout-bg-content-title/[0.03] focus-visible:uizz-layout-shadow-[0_0_0_2px_#039be5_inset]',
           {

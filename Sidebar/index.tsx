@@ -7,7 +7,7 @@ import Group from './Group';
 import Item from './Item';
 import LayoutContext from '../context';
 import Overlay from '../Overlay';
-import cx from '../utils/cx';
+import { cn } from '../utils/cn';
 import nestedComponent from '../utils/nestedComponent';
 
 export interface SidebarProps {
@@ -48,8 +48,8 @@ const Sidebar = ({ currentLocation, children }: SidebarProps) => {
         <Overlay visible={opened} className='xl:uizz-layout-hidden' onClick={toggleMenu} underTopbar />
 
         <aside
-          className={cx(
-            'uizz-layout-fixed uizz-layout-inset-y-0 uizz-layout-left-[calc(var(--eduzz-ui-layout-sidebar-width-rem)*-1)] uizz-layout-z-[104] uizz-layout-inline-flex uizz-layout-w-[var(--eduzz-ui-layout-sidebar-width-rem)] uizz-layout-grow uizz-layout-flex-col uizz-layout-bg-surface-default uizz-layout-shadow-[0px_4px_8px_rgb(var(--eduzz-ui-layout-content-title)_/_0.16)] uizz-layout-transition-[left,_background-color] xl:uizz-layout-left-0 xl:uizz-layout-bg-surface-subtle  xl:uizz-layout-shadow-none',
+          className={cn(
+            'uizz-layout-fixed uizz-layout-inset-y-0 uizz-layout-left-[calc(var(--eduzz-ui-layout-sidebar-width-rem)*-1)] uizz-layout-z-[104] uizz-layout-inline-flex uizz-layout-w-[var(--eduzz-ui-layout-sidebar-width-rem)] uizz-layout-grow uizz-layout-flex-col uizz-layout-bg-surface-default uizz-layout-shadow-[0px_4px_8px_rgb(0_0_0_/_0.16)] uizz-layout-transition-[left,_background-color] xl:uizz-layout-left-0 xl:uizz-layout-bg-surface-subtle  xl:uizz-layout-shadow-none',
             {
               'uizz-layout-top-[var(--eduzz-ui-layout-topbar-height-rem)]': hasTopbar,
               '!uizz-layout-left-0': opened
