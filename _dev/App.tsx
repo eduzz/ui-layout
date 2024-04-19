@@ -1,8 +1,9 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 
 import { MessageOutlined, BellOutlined, NotificationOutlined, ExperimentOutlined } from '@ant-design/icons';
 
 import Layout from '..';
+import { useAppLoader } from '../AppLoader/context';
 import Avatar from '../Avatar';
 
 const { Sidebar, Topbar, Content } = Layout;
@@ -12,6 +13,12 @@ function App() {
   const onSearchEnter = useCallback((search: string, clear: () => void) => {
     console.log({ search });
     clear();
+  }, []);
+
+  const loaderOptions = useAppLoader();
+
+  useEffect(() => {
+    setTimeout(() => loaderOptions.hide(), 3000);
   }, []);
 
   return (

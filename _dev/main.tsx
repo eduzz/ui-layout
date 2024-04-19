@@ -1,11 +1,15 @@
-import { StrictMode } from 'react';
+import { StrictMode, lazy } from 'react';
 
 import { createRoot } from 'react-dom/client';
 
-import App from './App';
+import AppLoader from '../AppLoader';
+
+const App = lazy(() => import('./App'));
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <StrictMode>
-    <App />
+    <AppLoader>
+      <App />
+    </AppLoader>
   </StrictMode>
 );

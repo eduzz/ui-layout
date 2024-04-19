@@ -32,7 +32,7 @@ const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
   const wrapperDropdownRef = useRef<HTMLDivElement>(null);
 
   const [applications] = usePromise(async () => {
-    const request = await fetch('https://eduzz-houston.s3.amazonaws.com/topbar/applications.json');
+    const request = await fetch('https://cdn.eduzzcdn.com/topbar/applications.json');
     const applications: TopbarApplication[] = await request.json();
 
     return applications.filter(app => {
