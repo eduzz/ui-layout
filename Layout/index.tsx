@@ -17,6 +17,7 @@ export type LayoutProps = HTMLAttributes<HTMLDivElement> & {
   primaryColor?: `#${string}`;
   secondaryColor?: `#${string}`;
   mode?: 'light' | 'dark';
+  persistMode?: boolean;
   acceptModeBySearchParam?: boolean;
   onModeChange?: (newMode: 'light' | 'dark') => void;
 };
@@ -27,6 +28,7 @@ const Layout = ({
   primaryColor,
   secondaryColor,
   mode,
+  persistMode,
   acceptModeBySearchParam,
   onModeChange,
   ...rest
@@ -39,7 +41,7 @@ const Layout = ({
 
   const [userMenuOpened, toogleUserMenuOpened, trueUserMenuOpened, falseUserMenuOpened] = useBoolean(false);
   const [sidebarOpened, toogleSidebarOpened, trueSidebarOpened, falseSidebarOpened] = useBoolean(false);
-  const [currentMode, toggleMode] = useMode(mode, acceptModeBySearchParam, onModeChange);
+  const [currentMode, toggleMode] = useMode({ mode, acceptModeBySearchParam, onModeChange, persistMode });
 
   const registerTopbar = useCallback(() => {
     setHasTopbar(true);

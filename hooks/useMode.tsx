@@ -4,11 +4,14 @@ import { getLocalStorageInstance } from '../utils/localStorage';
 
 export type PossibleModes = 'dark' | 'light';
 
-export default function useMode(
-  mode?: PossibleModes,
-  acceptModeBySearchParam?: boolean,
-  onModeChange?: (newMode: PossibleModes) => void
-) {
+type UseModeOptions = {
+  mode?: PossibleModes;
+  acceptModeBySearchParam?: boolean;
+  persistMode?: boolean;
+  onModeChange?: (newMode: PossibleModes) => void;
+};
+
+export default function useMode({ mode, acceptModeBySearchParam, persistMode, onModeChange }: UseModeOptions) {
   const localStorageInstance = getLocalStorageInstance();
 
   const [currentMode, setCurrentMode] = useState<'light' | 'dark'>(() => {
@@ -28,13 +31,13 @@ export default function useMode(
       return searchParamsMode;
     }
 
-    const storagedMode = localStorageInstance?.getItem('eduzz-ui-mode') as PossibleModes | undefined;
+    const storageMode = localStorageInstance?.getItem('eduzz-ui-mode') as PossibleModes | undefined;
 
-    if (!storagedMode) {
+    if (!storageMode) {
       return mode || 'light';
     }
 
-    return storagedMode;
+    return storageMode;
   });
 
   const toggleMode = useCallback(() => {
@@ -51,7 +54,10 @@ export default function useMode(
     }
 
     document.body.setAttribute('data-eduzz-theme', desiredTheme);
-    localStorageInstance?.setItem('eduzz-ui-mode', desiredTheme);
+
+    if (persistMode) {
+      localStorageInstance?.setItem('eduzz-ui-mode', desiredTheme);
+    }
   }, []);
 
   useEffect(() => {
