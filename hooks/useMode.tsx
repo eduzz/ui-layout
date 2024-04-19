@@ -46,7 +46,7 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
     });
 
     return () => setCurrentMode(mode || 'light');
-  }, []);
+  }, [mode]);
 
   const applyModeChange = useCallback(
     (desiredTheme: PossibleModes) => {

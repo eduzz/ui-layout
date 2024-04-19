@@ -3,6 +3,7 @@ import { ReactNode, Suspense, useMemo, useState } from 'react';
 import AppLoaderContext, { AppLoaderContextValue } from './context';
 import Logo from './Logo';
 import { cn } from '../utils/cn';
+import errorFormatter from '../utils/errorFormatter';
 
 export type AppLoaderProps = {
   children: ReactNode;
@@ -19,8 +20,7 @@ const AppLoader = ({ children, logo, logoDarkMode }: AppLoaderProps) => {
       show: () => setShow(true),
       error: (error: any, tryAgain: () => void) =>
         setError({
-          // message: errorFormatter(error),
-          message: error,
+          message: errorFormatter(error),
           tryAgain: () => {
             tryAgain();
             setError(null);

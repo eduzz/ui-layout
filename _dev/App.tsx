@@ -18,8 +18,8 @@ function App() {
   const loaderOptions = useAppLoader();
 
   useEffect(() => {
-    setTimeout(() => loaderOptions.hide(), 3000);
-  }, []);
+    setTimeout(() => loaderOptions.hide(), 1000);
+  }, [loaderOptions]);
 
   return (
     <>

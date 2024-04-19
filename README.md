@@ -1,3 +1,8 @@
+# Eduzz UI
+UI padrão das aplicações, aqui você vai encontrar:
+* [Layout](#layout)
+* [App Loader](#app-loader)
+
 # Layout
 
 Estrutura padrão das aplicações.
@@ -126,11 +131,12 @@ function MyComponent() {
 ## Props
 
 ### Layout props
-| prop               | tipo     | obrigatório | padrão | descrição                                                   |
-|--------------------|----------|-------------|--------|-------------------------------------------------------------|
-| mode               | `'light' \| 'dark'`    | `false`     | `'light'`      |  Modo (Dark ou Light mode)                                     |
-| acceptModeBySearchParam               | `boolean`    | `false`     | `false`      |  Aceita receber `?eduzzMode=dark` na URL por exemplo, para definir o `mode`                                     |
-| onModeChange         | `(newMode: 'light' \| 'dark') => void`    | `false`     | -      | Função a ser executada toda vez que houver uma mudança de modo.                           |
+| prop                    | tipo                                   | obrigatório | padrão    | descrição                                                                        |
+|-------------------------|----------------------------------------|-------------|-----------|----------------------------------------------------------------------------------|
+| mode                    | `'light' \| 'dark'`                    | `false`     | `'light'` | Modo (Dark ou Light mode)                                                        |
+| persistMode             | `boolean`                              | `false`     | `false`   | Faz o modo (Dark ou Light mode) persistirem no localStorage como `eduzz-ui-mode` |
+| acceptModeBySearchParam | `boolean`                              | `false`     | `false`   | Aceita receber `?eduzzMode=dark` na URL por exemplo, para definir o `mode`       |
+| onModeChange            | `(newMode: 'light' \| 'dark') => void` | `false`     | -         | Função a ser executada toda vez que houver uma mudança de modo.                  |
 
 ### Topbar props
 
@@ -207,3 +213,59 @@ function MyComponent() {
 | prop           | tipo      | obrigatório | padrão | descrição        |
 |----------------|-----------|-------------|--------|------------------|
 | disablePadding | `boolean` | `false`     | -      | Remove o padding |
+
+# App Loader
+
+Loader de aplicação padrão.
+
+## Importação
+
+```js
+import AppLoader, { useAppLoader } from '@eduzz/ui-app-loader';
+```
+
+## Exemplo
+
+Coloque no momento de `createRoot` e use o lazy para aparecer o loader antes da aplicação. Coloque o minimo de imports nesse arquivo para carregar o mais rapido possível.
+
+```jsx
+import { lazy } from 'react';
+import { createRoot } from 'react-dom/client';
+import AppLoader from '@eduzz/ui-app-loader'; 
+
+const App = lazy(() => import('./App'));
+
+createRoot(document.getElementById('app') as HTMLElement).render(
+  <AppLoader>
+    <App />
+  </AppLoader>
+);
+
+// App.tsx
+import { useEffect } from 'react';
+import { useAppLoader } from '@eduzz/ui-app-loader';
+
+function App() {
+  const appLoader = useAppLoader();
+
+  useEffect(() => {
+    // Faça o que precisar ser feito e entao chame o `hide`
+    appLoader.hide();
+    // Caso queira aparecer novamente
+    appLoader.show();
+    // Se algo acontecer pode mostrar uma mensagem de erro
+    appLoader.error(new Error(), () => console.log('Tente novamente'));
+  }, []);
+
+  return <div />
+}
+```
+
+## Props
+
+### AppLoader props
+
+| prop     | tipo             | obrigatório | padrão       |
+|----------|------------------|-------------|--------------|
+| logo     | `url\|ReactNode` | `false`     | `Eduzz Logo` |
+| logoDark | `url\|ReactNode` | `false`     | `Eduzz Logo` |
