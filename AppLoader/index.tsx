@@ -7,8 +7,8 @@ import errorFormatter from '../utils/errorFormatter';
 
 export type AppLoaderProps = {
   children: ReactNode;
-  logo?: ReactNode | string;
-  logoDarkMode?: ReactNode | string;
+  logo?: ReactNode;
+  logoDarkMode?: ReactNode;
 };
 
 const AppLoader = ({ children, logo, logoDarkMode }: AppLoaderProps) => {

@@ -214,6 +214,10 @@ function MyComponent() {
 |----------------|-----------|-------------|--------|------------------|
 | disablePadding | `boolean` | `false`     | -      | Remove o padding |
 
+<br/>
+<br/>
+
+
 # App Loader
 
 Loader de aplicação padrão.
@@ -221,7 +225,7 @@ Loader de aplicação padrão.
 ## Importação
 
 ```js
-import AppLoader, { useAppLoader } from '@eduzz/ui-app-loader';
+import AppLoader, { useAppLoader } from '@eduzz/ui-layout';
 ```
 
 ## Exemplo
@@ -231,7 +235,7 @@ Coloque no momento de `createRoot` e use o lazy para aparecer o loader antes da 
 ```jsx
 import { lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import AppLoader from '@eduzz/ui-app-loader'; 
+import AppLoader from '@eduzz/ui-layout'; 
 
 const App = lazy(() => import('./App'));
 
@@ -243,7 +247,7 @@ createRoot(document.getElementById('app') as HTMLElement).render(
 
 // App.tsx
 import { useEffect } from 'react';
-import { useAppLoader } from '@eduzz/ui-app-loader';
+import { useAppLoader } from '@eduzz/ui-layout';
 
 function App() {
   const appLoader = useAppLoader();
@@ -265,7 +269,7 @@ function App() {
 
 ### AppLoader props
 
-| prop     | tipo             | obrigatório | padrão       |
-|----------|------------------|-------------|--------------|
-| logo     | `url\|ReactNode` | `false`     | `Eduzz Logo` |
-| logoDark | `url\|ReactNode` | `false`     | `Eduzz Logo` |
+| prop         | tipo             | obrigatório | padrão       |
+|--------------|------------------|-------------|--------------|
+| logo         | `url\|ReactNode` | `false`     | `Eduzz Logo` |
+| logoDarkMode | `url\|ReactNode` | `false`     | `Eduzz Logo` |
