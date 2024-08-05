@@ -178,6 +178,14 @@ function MyComponent() {
 |-------|----------|-------------|--------|---------------------------------------------------|
 | token | `string` | `false`     | -      | Token gerado pelo servidor para uso do LiveHelper |
 
+### Topbar.HyperflowSupportChat props
+
+| prop            | tipo     | obrigatório | padrão | descrição                                            |
+|-----------------|----------|-------------|--------|------------------------------------------------------|
+| hyperflowConfig | `object` | `true`      | -      | Tokens dos canais do Hyperflow                       |
+| flowId          | `string` | `true`      | -      | Id do flow do Hyperflow                              |
+| currentUser     | `object` | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+
 ### Topbar.ModeSwitcher props
 | prop               | tipo     | obrigatório | padrão | descrição                                                   |
 |--------------------|----------|-------------|--------|-------------------------------------------------------------|

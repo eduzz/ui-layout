@@ -7,6 +7,7 @@ import Actions from './Actions';
 import Apps from './Apps';
 import Belt from './Belt';
 import TopbarContext, { TopbarContextType } from './context';
+import HyperflowSupportChat from './HyperflowSupportChat';
 import Logo from './Logo';
 import ModeSwitcher from './ModeSwitcher';
 import Search from './Search';
@@ -43,6 +44,7 @@ export interface TopbarProps extends HTMLAttributes<HTMLDivElement> {
     isClubeBlack?: boolean;
     isSupport?: boolean;
     supportId?: number;
+    ssid?: string;
   };
 }
 
@@ -129,6 +131,7 @@ const Topbar = memo<TopbarProps>(
 export default nestedComponent(Topbar, {
   Action,
   UnitySupportChat,
+  HyperflowSupportChat,
   UserMenu,
   UserMenuItem,
   UserMenuDivider,
