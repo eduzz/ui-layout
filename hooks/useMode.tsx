@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
-import { getLocalStorageInstance } from '../utils/localStorage';
+import Cookies from 'universal-cookie';
 
 export type PossibleModes = 'dark' | 'light';
 
@@ -12,7 +12,7 @@ type UseModeOptions = {
 };
 
 export default function useMode({ mode, acceptModeBySearchParam, persistMode, onModeChange }: UseModeOptions) {
-  const localStorageInstance = getLocalStorageInstance();
+  const cookies = useMemo(() => new Cookies(), []);
 
   const [currentMode, setCurrentMode] = useState<'light' | 'dark'>(() => {
     const getSearchParamsMode = (searchParamsAllowed?: boolean) => {
@@ -31,7 +31,7 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
       return searchParamsMode;
     }
 
-    const storageMode = localStorageInstance?.getItem('eduzz-ui-mode') as PossibleModes | undefined;
+    const storageMode = cookies.get('eduzz-theme') as PossibleModes | undefined;
 
     if (!storageMode) {
       return mode || 'light';
@@ -57,10 +57,10 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
       document.body.setAttribute('data-eduzz-theme', desiredTheme);
 
       if (persistMode) {
-        localStorageInstance?.setItem('eduzz-ui-mode', desiredTheme);
+        cookies.set('eduzz-theme', desiredTheme);
       }
     },
-    [localStorageInstance, persistMode]
+    [persistMode, cookies]
   );
 
   useEffect(() => {

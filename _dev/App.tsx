@@ -23,7 +23,7 @@ function App() {
 
   return (
     <>
-      <Layout mode='light'>
+      <Layout mode='light' persistMode={true}>
         <Topbar
           currentApplication='orbita'
           user={{
