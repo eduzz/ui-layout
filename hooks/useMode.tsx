@@ -12,7 +12,10 @@ type UseModeOptions = {
 };
 
 export default function useMode({ mode, acceptModeBySearchParam, persistMode, onModeChange }: UseModeOptions) {
-  const cookies = useMemo(() => new Cookies(), []);
+  const cookies = useMemo(() => {
+    const domain = window.location.hostname.split('.').slice(-2).join('.'); // console.eduzz.com => .eduzz.com
+    return new Cookies(null, { domain });
+  }, []);
 
   const [currentMode, setCurrentMode] = useState<'light' | 'dark'>(() => {
     const getSearchParamsMode = (searchParamsAllowed?: boolean) => {
