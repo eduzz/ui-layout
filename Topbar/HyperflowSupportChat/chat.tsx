@@ -1,23 +1,7 @@
 import useExternalScript from './import';
+import { CurrentUser, HyperflowConfig, HyperflowParams, SupportChatProps } from './types';
 
-type HyperflowParams = {
-  id?: number;
-  name?: string;
-  email?: string;
-  eliteChatToken?: string;
-  original_id?: number;
-  original_name?: string;
-  original_email?: string;
-  sender?: string;
-};
-
-interface SupportChatProps {
-  jwtToHyperflow: string;
-  currentUser: any;
-  hyperflowConfig: any;
-}
-
-function getChatTokenID(currentUser: any, hyperflowConfig: any) {
+function getChatTokenID(currentUser: CurrentUser, hyperflowConfig: HyperflowConfig) {
   const chatUnityID = hyperflowConfig.chatUnityID;
   const chatBlackID = hyperflowConfig.chatBlackID;
   const chatEliteID = hyperflowConfig.chatEliteID;
@@ -35,10 +19,10 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({ jwtToHyperflow, curr
 
   if (hyperflow === 'ready') {
     Hyperflow.init(chatToken).on('getStarted', () => {
-      const params: HyperflowParams = {
-        id: currentUser?.id,
-        name: currentUser?.name.split(' ')[0],
-        email: currentUser?.email,
+      const params: Partial<HyperflowParams> = {
+        id: currentUser.id,
+        name: currentUser.name.split(' ')[0],
+        email: currentUser.email,
         sender: jwtToHyperflow
       };
 

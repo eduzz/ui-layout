@@ -1,10 +1,5 @@
 import HyperflowSupportChat from './chat';
-
-export interface TopbarHyperflowSupportChatProps {
-  jwtToHyperflow?: string;
-  currentUser?: any;
-  hyperflowConfig?: any;
-}
+import { TopbarHyperflowSupportChatProps } from './types';
 
 const TopbarHyperflowSupportChat = ({
   jwtToHyperflow,
