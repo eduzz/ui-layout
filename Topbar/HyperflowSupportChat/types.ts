@@ -6,10 +6,15 @@ export type CurrentUser = {
   name: string;
   email: string;
   isAccessPolicy: boolean;
-  originalUserId: number;
-  originalUserName: string;
-  originalUserEmail: string;
-};
+} & (
+  | {
+      isAccessPolicy: true;
+      originalUserId: number;
+      originalUserName: string;
+      originalUserEmail: string;
+    }
+  | { isAccessPolicy: false }
+);
 
 export type HyperflowConfig = {
   chatUnityID: string;
@@ -28,7 +33,6 @@ export type HyperflowParams = {
   id: number;
   name: string;
   email: string;
-  eliteChatToken: string;
   original_id?: number;
   original_name?: string;
   original_email?: string;

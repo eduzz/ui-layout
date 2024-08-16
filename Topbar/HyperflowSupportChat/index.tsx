@@ -7,7 +7,6 @@ const TopbarHyperflowSupportChat = ({
   hyperflowConfig
 }: TopbarHyperflowSupportChatProps) => {
   if (!jwtToHyperflow) return null;
-
   return (
     <HyperflowSupportChat jwtToHyperflow={jwtToHyperflow} currentUser={currentUser} hyperflowConfig={hyperflowConfig} />
   );
