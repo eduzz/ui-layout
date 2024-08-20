@@ -1,5 +1,7 @@
 # Eduzz UI
+
 UI padrão das aplicações, aqui você vai encontrar:
+
 * [Layout](#layout)
 * [App Loader](#app-loader)
 
@@ -131,6 +133,7 @@ function MyComponent() {
 ## Props
 
 ### Layout props
+
 | prop                    | tipo                                   | obrigatório | padrão    | descrição                                                                        |
 |-------------------------|----------------------------------------|-------------|-----------|----------------------------------------------------------------------------------|
 | mode                    | `'light' \| 'dark'`                    | `false`     | `'light'` | Modo (Dark ou Light mode)                                                        |
@@ -182,15 +185,43 @@ function MyComponent() {
 
 | prop            | tipo     | obrigatório | padrão | descrição                                            |
 |-----------------|----------|-------------|--------|------------------------------------------------------|
-| hyperflowConfig | `object` | `true`      | -      | Tokens dos canais do Hyperflow                       |
+| hyperflowConfig | `HyperflowConfig` | `true`      | -      | Tokens dos canais do Hyperflow                       |
 | flowId          | `string` | `true`      | -      | Id do flow do Hyperflow                              |
-| currentUser     | `object` | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+| currentUser     | `CurrentUser` | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+
+```ts
+export type CurrentUser = {
+  tag: string;
+  belt: string;
+  isClubeBlack: boolean;
+  id: number;
+  name: string;
+  email: string;
+  isAccessPolicy: boolean;
+} & (
+  | {
+      isAccessPolicy: true;
+      originalUserId: number;
+      originalUserName: string;
+      originalUserEmail: string;
+    }
+  | { isAccessPolicy: false }
+);
+
+type HyperflowConfig = {
+  chatUnityID: string;
+  chatBlackID: string;
+  chatEliteID: string;
+  flowId: string;
+};
+```
 
 ### Topbar.ModeSwitcher props
+
 | prop               | tipo     | obrigatório | padrão | descrição                                                   |
 |--------------------|----------|-------------|--------|-------------------------------------------------------------|
-| tooltip               | `string`    | `false`     | `'Tema'`      |  Texto para o tooltip do botão. mode)                                     |
-| badgeDot         | `boolean`    | `false`     | `false`      | Se um badgeDot deve ser adicionado ao botão .                           |
+| tooltip| `string`| `false`| `'Tema'`|  Texto para o tooltip do botão. mode |
+| badgeDot| `boolean`| `false`| `false`| Se um badgeDot deve ser adicionado ao botão .|
 
 ### Sidebar props
 
@@ -224,7 +255,6 @@ function MyComponent() {
 
 <br/>
 <br/>
-
 
 # App Loader
 

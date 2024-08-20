@@ -37,7 +37,27 @@ function App() {
           }}
         >
           <Topbar.UnitySupportChat />
-          <Topbar.HyperflowSupportChat />
+          <Topbar.HyperflowSupportChat
+            currentUser={{
+              tag: 'unity',
+              belt: 'Red Belt',
+              isClubeBlack: false,
+              id: 1,
+              name: 'QA-ORBITA-NAO-ALTERAR-NAO-ALTERAR',
+              email: 'email@email.com',
+              isAccessPolicy: true,
+              originalUserId: 1,
+              originalUserName: 'QA-ORBITA-NAO-ALTERAR-NAO-ALTERAR',
+              originalUserEmail: 'email@email.com'
+            }}
+            hyperflowConfig={{
+              chatBlackID: 'bla',
+              chatEliteID: 'bla',
+              chatUnityID: 'bla',
+              flowId: 'bla'
+            }}
+            jwtToHyperflow='bla'
+          />
 
           <Topbar.Search onEnter={onSearchEnter} />
           <Topbar.ModeSwitcher />
