@@ -213,6 +213,7 @@ type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
+  origin: string;
 };
 ```
 

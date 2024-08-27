@@ -26,7 +26,8 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({ jwtToHyperflow, curr
       id: currentUser.id,
       name: currentUser.name.split(' ')[0],
       email: currentUser.email,
-      sender: jwtToHyperflow
+      sender: jwtToHyperflow,
+      origin: hyperflowConfig.origin
     };
 
     if (currentUser?.isAccessPolicy) {
