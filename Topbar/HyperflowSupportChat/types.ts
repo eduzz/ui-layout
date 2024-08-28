@@ -21,6 +21,7 @@ export type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
+  origin: 'blinket' | 'checkout' | 'myeduzz' | 'nutror' | 'orbitpages' | 'safevideo';
 };
 
 export type TopbarHyperflowSupportChatProps = {
@@ -37,6 +38,7 @@ export type HyperflowParams = {
   original_name?: string;
   original_email?: string;
   sender: string;
+  origin: 'blinket' | 'checkout' | 'myeduzz' | 'nutror' | 'orbitpages' | 'safevideo';
 };
 
 export type SupportChatProps = {

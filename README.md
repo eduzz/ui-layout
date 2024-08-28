@@ -183,11 +183,11 @@ function MyComponent() {
 
 ### Topbar.HyperflowSupportChat props
 
-| prop            | tipo     | obrigatório | padrão | descrição                                            |
-|-----------------|----------|-------------|--------|------------------------------------------------------|
+| prop            | tipo              | obrigatório | padrão | descrição                                            |
+|-----------------|-------------------|-------------|--------|------------------------------------------------------|
 | hyperflowConfig | `HyperflowConfig` | `true`      | -      | Tokens dos canais do Hyperflow                       |
-| flowId          | `string` | `true`      | -      | Id do flow do Hyperflow                              |
-| currentUser     | `CurrentUser` | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+| flowId          | `string`          | `true`      | -      | Id do flow do Hyperflow                              |
+| currentUser     | `CurrentUser`     | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
 
 ```ts
 export type CurrentUser = {
@@ -213,7 +213,9 @@ type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
+  origin: 'blinket' | 'checkout' | 'myeduzz' | 'nutror' | 'orbitpages' | 'safevideo';
 };
+
 ```
 
 ### Topbar.ModeSwitcher props
