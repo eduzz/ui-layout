@@ -183,11 +183,11 @@ function MyComponent() {
 
 ### Topbar.HyperflowSupportChat props
 
-| prop            | tipo     | obrigatório | padrão | descrição                                            |
-|-----------------|----------|-------------|--------|------------------------------------------------------|
+| prop            | tipo              | obrigatório | padrão | descrição                                            |
+|-----------------|-------------------|-------------|--------|------------------------------------------------------|
 | hyperflowConfig | `HyperflowConfig` | `true`      | -      | Tokens dos canais do Hyperflow                       |
-| flowId          | `string` | `true`      | -      | Id do flow do Hyperflow                              |
-| currentUser     | `CurrentUser` | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+| flowId          | `string`          | `true`      | -      | Id do flow do Hyperflow                              |
+| currentUser     | `CurrentUser`     | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
 
 ```ts
 export type CurrentUser = {
@@ -213,7 +213,18 @@ type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
-  origin: string;
+  origin: OriginType;
+};
+
+enum OriginType {
+  alpaclass = 'alpaclass',
+  alumy = 'alumy',
+  blinket = 'blinket',
+  checkout = 'checkout',
+  myeduzz = 'myeduzz',
+  nutror = 'nutror',
+  orbitpages = 'orbitpages',
+  safevideo = 'safevideo'
 };
 ```
 

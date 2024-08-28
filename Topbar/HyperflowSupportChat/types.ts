@@ -21,7 +21,7 @@ export type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
-  origin: string;
+  origin: OriginType;
 };
 
 export type TopbarHyperflowSupportChatProps = {
@@ -29,6 +29,15 @@ export type TopbarHyperflowSupportChatProps = {
   currentUser: CurrentUser;
   hyperflowConfig: HyperflowConfig;
 };
+
+enum OriginType {
+  blinket = 'blinket',
+  checkout = 'checkout',
+  myeduzz = 'myeduzz',
+  nutror = 'nutror',
+  orbitpages = 'orbitpages',
+  safevideo = 'safevideo'
+}
 
 export type HyperflowParams = {
   id: number;
@@ -38,7 +47,7 @@ export type HyperflowParams = {
   original_name?: string;
   original_email?: string;
   sender: string;
-  origin: string;
+  origin: OriginType;
 };
 
 export type SupportChatProps = {
