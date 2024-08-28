@@ -213,19 +213,9 @@ type HyperflowConfig = {
   chatBlackID: string;
   chatEliteID: string;
   flowId: string;
-  origin: OriginType;
+  origin: 'blinket' | 'checkout' | 'myeduzz' | 'nutror' | 'orbitpages' | 'safevideo';
 };
 
-enum OriginType {
-  alpaclass = 'alpaclass',
-  alumy = 'alumy',
-  blinket = 'blinket',
-  checkout = 'checkout',
-  myeduzz = 'myeduzz',
-  nutror = 'nutror',
-  orbitpages = 'orbitpages',
-  safevideo = 'safevideo'
-};
 ```
 
 ### Topbar.ModeSwitcher props
