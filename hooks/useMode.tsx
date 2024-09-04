@@ -34,7 +34,15 @@ export default function useMode({ mode, acceptModeBySearchParam, persistMode, on
       return searchParamsMode;
     }
 
-    const storageMode = cookies.get('eduzz-theme') as PossibleModes | undefined;
+    const getThemeCookie = () => {
+      if (!persistMode) {
+        return undefined;
+      }
+
+      return cookies.get('eduzz-theme') as PossibleModes | undefined;
+    };
+
+    const storageMode = getThemeCookie();
 
     if (!storageMode) {
       return mode || 'light';
