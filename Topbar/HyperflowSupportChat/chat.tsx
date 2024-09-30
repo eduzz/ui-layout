@@ -22,25 +22,23 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({ getJwtPromise, curre
   }
 
   Hyperflow.init(chatToken).on('getStarted', async () => {
-
     try {
-        const jwt = await getJwtPromise;
-        const params: HyperflowParams = {
-          id: currentUser.id,
-          name: currentUser.name.split(' ')[0],
-          email: currentUser.email,
-          sender: jwt,
-          origin: hyperflowConfig.origin
-        };
-    
-        if (currentUser?.isAccessPolicy) {
-          params.original_id = currentUser?.originalUserId;
-          params.original_name = currentUser?.originalUserName?.split(' ')[0];
-          params.original_email = currentUser?.originalUserEmail;
-        }
-    
-        Hyperflow.initFlow(hyperflowConfig.flowId, params);
+      const jwt = await getJwtPromise;
+      const params: HyperflowParams = {
+        id: currentUser.id,
+        name: currentUser.name.split(' ')[0],
+        email: currentUser.email,
+        sender: jwt,
+        origin: hyperflowConfig.origin
+      };
 
+      if (currentUser?.isAccessPolicy) {
+        params.original_id = currentUser?.originalUserId;
+        params.original_name = currentUser?.originalUserName?.split(' ')[0];
+        params.original_email = currentUser?.originalUserEmail;
+      }
+
+      Hyperflow.initFlow(hyperflowConfig.flowId, params);
     } catch {
       console.error('Error getting JWT');
     }
