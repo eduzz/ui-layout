@@ -54,9 +54,10 @@ function App() {
               chatBlackID: 'bla',
               chatEliteID: 'bla',
               chatUnityID: 'bla',
-              flowId: 'bla'
+              flowId: 'bla',
+              origin: 'blinket'
             }}
-            jwtToHyperflow='bla'
+            getJwtPromise= {new Promise<string>((resolve) => resolve(''))}
           />
 
           <Topbar.Search onEnter={onSearchEnter} />
