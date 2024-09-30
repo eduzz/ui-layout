@@ -57,7 +57,7 @@ function App() {
               flowId: 'bla',
               origin: 'blinket'
             }}
-            getJwtPromise= {new Promise<string>((resolve) => resolve(''))}
+            getJwtPromise= {Promise.resolve('')}
           />
 
           <Topbar.Search onEnter={onSearchEnter} />
