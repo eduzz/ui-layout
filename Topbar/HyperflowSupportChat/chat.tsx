@@ -13,7 +13,7 @@ function getChatTokenID(currentUser: CurrentUser, hyperflowConfig: HyperflowConf
   return chatEliteID;
 }
 
-const HyperflowSupportChat: React.FC<SupportChatProps> = ({ jwtToHyperflow, currentUser, hyperflowConfig }) => {
+const HyperflowSupportChat: React.FC<SupportChatProps> = ({ getJwtPromise, currentUser, hyperflowConfig }) => {
   const hyperflow = useExternalScript('https://webchat.hyperflow.global/sdk.js');
   const chatToken = getChatTokenID(currentUser, hyperflowConfig);
 
@@ -21,22 +21,29 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({ jwtToHyperflow, curr
     return null;
   }
 
-  Hyperflow.init(chatToken).on('getStarted', () => {
-    const params: HyperflowParams = {
-      id: currentUser.id,
-      name: currentUser.name.split(' ')[0],
-      email: currentUser.email,
-      sender: jwtToHyperflow,
-      origin: hyperflowConfig.origin
-    };
+  Hyperflow.init(chatToken).on('getStarted', async () => {
 
-    if (currentUser?.isAccessPolicy) {
-      params.original_id = currentUser?.originalUserId;
-      params.original_name = currentUser?.originalUserName?.split(' ')[0];
-      params.original_email = currentUser?.originalUserEmail;
+    try {
+        const jwt = await getJwtPromise;
+        const params: HyperflowParams = {
+          id: currentUser.id,
+          name: currentUser.name.split(' ')[0],
+          email: currentUser.email,
+          sender: jwt,
+          origin: hyperflowConfig.origin
+        };
+    
+        if (currentUser?.isAccessPolicy) {
+          params.original_id = currentUser?.originalUserId;
+          params.original_name = currentUser?.originalUserName?.split(' ')[0];
+          params.original_email = currentUser?.originalUserEmail;
+        }
+    
+        Hyperflow.initFlow(hyperflowConfig.flowId, params);
+
+    } catch {
+      console.error('Error getting JWT');
     }
-
-    Hyperflow.initFlow(hyperflowConfig.flowId, params);
   });
 };
 
