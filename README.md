@@ -177,9 +177,9 @@ function MyComponent() {
 
 ### Topbar.UnitySupportChat props
 
-| prop  | tipo     | obrigatório | padrão | descrição                                         |
-|-------|----------|-------------|--------|---------------------------------------------------|
-| token | `string` | `false`     | -      | Token gerado pelo servidor para uso do LiveHelper |
+| prop  | tipo                    | obrigatório | padrão | descrição                                         |
+|-------|-------------------------|-------------|--------|---------------------------------------------------|
+| token | `() => Promise<string>` | `false`     | -      | Token gerado pelo servidor para uso do LiveHelper |
 
 ### Topbar.HyperflowSupportChat props
 

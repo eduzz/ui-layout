@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
 
-const useExternalScript = url => {
-  const [state, setState] = useState(url ? 'loading' : 'idle');
+interface ScriptState {
+  state: 'idle' | 'loading' | 'ready' | 'error';
+}
+
+const useExternalScript = (url: string | null): ScriptState['state'] => {
+  const [state, setState] = useState<ScriptState['state']>(url ? 'loading' : 'idle');
 
   useEffect(() => {
     if (!url) {
@@ -9,9 +13,9 @@ const useExternalScript = url => {
       return;
     }
 
-    let script = document.querySelector(`script[src="${url}"]`);
+    let script = document.querySelector(`script[src="${url}"]`) as HTMLScriptElement;
 
-    const handleScript = e => {
+    const handleScript = (e: Event): void => {
       setState(e.type === 'load' ? 'ready' : 'error');
     };
 
