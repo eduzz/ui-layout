@@ -25,7 +25,7 @@ export type HyperflowConfig = {
 };
 
 export type TopbarHyperflowSupportChatProps = {
-  getJwtPromise: Promise<string>;
+  getJwtPromise: () => Promise<string>;
   currentUser: CurrentUser;
   hyperflowConfig: HyperflowConfig;
 };
@@ -42,7 +42,7 @@ export type HyperflowParams = {
 };
 
 export type SupportChatProps = {
-  getJwtPromise: Promise<string>;
+  getJwtPromise: () => Promise<string>;
   currentUser: CurrentUser;
   hyperflowConfig: HyperflowConfig;
 };
