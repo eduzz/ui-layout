@@ -2,12 +2,18 @@ import HyperflowSupportChat from './chat';
 import { TopbarHyperflowSupportChatProps } from './types';
 
 const TopbarHyperflowSupportChat = ({
-  getJwtPromise,
+  accountsJwt,
   currentUser,
-  hyperflowConfig
+  hyperflowConfig,
+  hyperflowJwt
 }: TopbarHyperflowSupportChatProps) => {
   return (
-    <HyperflowSupportChat getJwtPromise={getJwtPromise} currentUser={currentUser} hyperflowConfig={hyperflowConfig} />
+    <HyperflowSupportChat
+      accountsJwt={accountsJwt}
+      currentUser={currentUser}
+      hyperflowConfig={hyperflowConfig}
+      hyperflowJwt={hyperflowJwt}
+    />
   );
 };
 

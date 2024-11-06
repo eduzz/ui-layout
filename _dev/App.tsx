@@ -57,7 +57,8 @@ function App() {
               flowId: 'bla',
               origin: 'blinket'
             }}
-            getJwtPromise={() => Promise.resolve('')}
+            accountsJwt={() => Promise.resolve('')}
+            hyperflowJwt=''
           />
 
           <Topbar.Search onEnter={onSearchEnter} />
