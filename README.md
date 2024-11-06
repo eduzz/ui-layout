@@ -177,17 +177,18 @@ function MyComponent() {
 
 ### Topbar.UnitySupportChat props
 
-| prop  | tipo                    | obrigatório | padrão | descrição                                         |
-|-------|-------------------------|-------------|--------|---------------------------------------------------|
-| token | `() => Promise<string>` | `false`     | -      | Token gerado pelo servidor para uso do LiveHelper |
+| prop  | tipo     | obrigatório | padrão | descrição                                         |
+|-------|----------|-------------|--------|---------------------------------------------------|
+| token | `string` | `false`     | -      | Token gerado pelo servidor para uso do LiveHelper |
 
 ### Topbar.HyperflowSupportChat props
 
-| prop            | tipo              | obrigatório | padrão | descrição                                            |
-|-----------------|-------------------|-------------|--------|------------------------------------------------------|
-| hyperflowConfig | `HyperflowConfig` | `true`      | -      | Tokens dos canais do Hyperflow                       |
-| flowId          | `string`          | `true`      | -      | Id do flow do Hyperflow                              |
-| currentUser     | `CurrentUser`     | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+| prop            | tipo                    | obrigatório | padrão | descrição                                            |
+|-----------------|-------------------------|-------------|--------|------------------------------------------------------|
+| accountsJwt     | `() => Promise<string>` | `true`      | -      | JWT gerado a partir do accounts                      |
+| hyperflowConfig | `HyperflowConfig`       | `true`      | -      | Tokens dos canais do Hyperflow                       |
+| currentUser     | `CurrentUser`           | `true`      | -      | Dados do usuário que serão enviados para o Hyperflow |
+| hyperflowJwt    | `string`                | `true`      | -      | JWT gerado a partir do secret da Hyperflow           |
 
 ```ts
 export type CurrentUser = {
