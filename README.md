@@ -216,8 +216,9 @@ type HyperflowConfig = {
   flowId: string;
   origin: 'blinket' | 'checkout' | 'myeduzz' | 'nutror' | 'orbitpages' | 'safevideo';
 };
-
 ```
+
+Documentação de apoio: [Hyperflow](https://www.notion.so/eduzz/Doc-Implementa-o-do-Chat-Hyperflow-982b8fc935ee4f59974401df8668bda7)
 
 ### Topbar.ModeSwitcher props
 
@@ -255,9 +256,6 @@ type HyperflowConfig = {
 | prop           | tipo      | obrigatório | padrão | descrição        |
 |----------------|-----------|-------------|--------|------------------|
 | disablePadding | `boolean` | `false`     | -      | Remove o padding |
-
-<br/>
-<br/>
 
 # App Loader
 
