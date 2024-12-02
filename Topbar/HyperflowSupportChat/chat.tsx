@@ -55,7 +55,7 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hyperflow, currentUser?.id]);
 
-  return <div id='hyperflow-chat-container'>Chat is ready</div>;
+  return <div id='hyperflow-chat-container'></div>;
 };
 
 export default HyperflowSupportChat;
