@@ -53,7 +53,9 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({
       if (typeof Hyperflow === 'undefined') {
         return;
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error('Error initializing Hyperflow: ', e);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hyperflow, currentUser?.id]);
