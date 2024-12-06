@@ -25,33 +25,36 @@ const HyperflowSupportChat: React.FC<SupportChatProps> = ({
   const chatToken = getChatTokenID(currentUser, hyperflowConfig);
 
   useEffect(() => {
-    if (typeof Hyperflow === 'undefined') {
-      return;
-    }
+    try {
+      Hyperflow.reinit(chatToken, { sender: hyperflowJwt }).on('getStarted', async () => {
+        try {
+          const jwt = await accountsJwt();
+          const params: HyperflowParams = {
+            id: currentUser.id,
+            name: currentUser.name.split(' ')[0],
+            email: currentUser.email,
+            sender: jwt,
+            origin: hyperflowConfig.origin
+          };
 
-    Hyperflow.reinit(chatToken, { sender: hyperflowJwt }).on('getStarted', async () => {
-      try {
-        const jwt = await accountsJwt();
-        const params: HyperflowParams = {
-          id: currentUser.id,
-          name: currentUser.name.split(' ')[0],
-          email: currentUser.email,
-          sender: jwt,
-          origin: hyperflowConfig.origin
-        };
+          if (currentUser?.isAccessPolicy) {
+            params.original_id = currentUser?.originalUserId;
+            params.original_name = currentUser?.originalUserName?.split(' ')[0];
+            params.original_email = currentUser?.originalUserEmail;
+          }
 
-        if (currentUser?.isAccessPolicy) {
-          params.original_id = currentUser?.originalUserId;
-          params.original_name = currentUser?.originalUserName?.split(' ')[0];
-          params.original_email = currentUser?.originalUserEmail;
+          const clonableParams = JSON.parse(JSON.stringify(params));
+          Hyperflow.initFlow(hyperflowConfig.flowId, clonableParams);
+        } catch (error) {
+          console.error('Error getting JWT: ', error);
         }
+      });
 
-        const clonableParams = JSON.parse(JSON.stringify(params));
-        Hyperflow.initFlow(hyperflowConfig.flowId, clonableParams);
-      } catch (error) {
-        console.error('Error getting JWT: ', error);
+      if (typeof Hyperflow === 'undefined') {
+        return;
       }
-    });
+    } catch (e) {}
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hyperflow, currentUser?.id]);
 
