@@ -24,6 +24,27 @@ type TopbarAppsProps = {
   id?: string;
 };
 
+const getEnvironment = (): 'prod' | 'dev' | 'qa' => {
+  const host = window.location.host;
+
+  if (host.includes('testzz.ninja')) return 'qa';
+
+  if (host.includes('devopzz.ninja') || host.includes('localhost')) return 'dev';
+
+  return 'prod';
+};
+
+const getApplicationList = async () => {
+  const fileName = {
+    prod: 'applications.json',
+    dev: 'applications_dev.json',
+    qa: 'applications_qa.json'
+  }[getEnvironment()];
+
+  const request = await fetch(`https://cdn.eduzzcdn.com/topbar/${fileName}`);
+  return (await request.json()) as TopbarApplication[];
+};
+
 const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
   const isSupport = useContextSelector(TopbarContext, context => context.user?.isSupport ?? false);
   const currentApplication = useContextSelector(TopbarContext, context => context.currentApplication);
@@ -32,8 +53,7 @@ const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
   const wrapperDropdownRef = useRef<HTMLDivElement>(null);
 
   const [applications] = usePromise(async () => {
-    const request = await fetch('https://cdn.eduzzcdn.com/topbar/applications.json');
-    const applications: TopbarApplication[] = await request.json();
+    const applications = await getApplicationList();
 
     return applications.filter(app => {
       if (!app.beta) return true;
