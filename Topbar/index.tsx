@@ -14,10 +14,10 @@ import Search from './Search';
 import UnitySupportChat from './UnitySupportChat';
 import User from './User';
 import UserMenu from './UserMenu';
+import LayoutContext from '../context';
 import UserMenuDivider from './UserMenu/Divider';
 import UserMenuItem from './UserMenu/Item';
 import UserMenuGroup from './UserMenu/ItemGroup';
-import LayoutContext from '../context';
 import IconClose from '../Icons/Close';
 import IconMenu from '../Icons/Menu';
 import { cn } from '../utils/cn';
@@ -27,6 +27,7 @@ import './style.css';
 
 export interface TopbarProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
+  startChildren?: ReactNode;
   disableApps?: boolean;
   logo?: string;
   logoMobile?: string;
@@ -51,6 +52,7 @@ export interface TopbarProps extends HTMLAttributes<HTMLDivElement> {
 const Topbar = memo<TopbarProps>(
   ({
     children,
+    startChildren,
     currentApplication,
     logo,
     logoMobile,
@@ -113,6 +115,8 @@ const Topbar = memo<TopbarProps>(
               {!!user?.tag && (
                 <p className={cn('eduzz-ui-layout-topbar-tag', `eduzz-ui-layout-topbar-tag-${user.tag}`)}>{user.tag}</p>
               )}
+
+              {startChildren && <div className='uizz-layout-mx-[.5rem]'>{startChildren}</div>}
             </div>
 
             <div className='eduzz-ui-layout-topbar-center' ref={registerCenterPortal} />

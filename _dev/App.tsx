@@ -35,6 +35,7 @@ function App() {
             avatar: 'https://cdn.testzz.ninja/myeduzz/upload/3c/8e/3c8e5fc487944315a4ccdc3d95e6bda7',
             ssid: '0000aaaa-11bb-22cc-33dd-444444eeeeee'
           }}
+          startChildren={<div>sou filho</div>}
         >
           <Topbar.UnitySupportChat />
           <Topbar.HyperflowSupportChat
