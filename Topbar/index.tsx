@@ -27,7 +27,6 @@ import './style.css';
 
 export interface TopbarProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
-  startChildren?: ReactNode;
   disableApps?: boolean;
   logo?: string;
   logoMobile?: string;
@@ -52,7 +51,6 @@ export interface TopbarProps extends HTMLAttributes<HTMLDivElement> {
 const Topbar = memo<TopbarProps>(
   ({
     children,
-    startChildren,
     currentApplication,
     logo,
     logoMobile,
@@ -115,8 +113,6 @@ const Topbar = memo<TopbarProps>(
               {!!user?.tag && (
                 <p className={cn('eduzz-ui-layout-topbar-tag', `eduzz-ui-layout-topbar-tag-${user.tag}`)}>{user.tag}</p>
               )}
-
-              {startChildren && <div className='uizz-layout-mx-[.5rem]'>{startChildren}</div>}
             </div>
 
             <div className='eduzz-ui-layout-topbar-center' ref={registerCenterPortal} />
