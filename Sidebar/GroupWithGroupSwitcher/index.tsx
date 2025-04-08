@@ -77,7 +77,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
             <ul className='uizz-layout-m-0 uizz-layout-block uizz-layout-p-0'>
               <li
                 className={cn(
-                  'uizz-layout-group/menu uizz-layout-grid uizz-layout-gap-1 uizz-layout-px-4 uizz-layout-py-2 uizz-layout-text-sm uizz-layout-font-bold'
+                  'uizz-layout-group/menu uizz-layout-grid uizz-layout-gap-1 uizz-layout-px-4 uizz-layout-py-3 uizz-layout-text-sm uizz-layout-font-bold'
                 )}
               >
                 {label}:
