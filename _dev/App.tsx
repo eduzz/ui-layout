@@ -1,13 +1,20 @@
 import { useCallback, useEffect } from 'react';
 
-import { MessageOutlined, BellOutlined, NotificationOutlined, ExperimentOutlined } from '@ant-design/icons';
+import {
+  MessageOutlined,
+  BellOutlined,
+  NotificationOutlined,
+  ExperimentOutlined,
+  WhatsAppOutlined,
+  MailOutlined
+} from '@ant-design/icons';
 
 import Layout from '..';
 import { useAppLoader } from '../AppLoader/context';
 import Avatar from '../Avatar';
 
 const { Sidebar, Topbar, Content } = Layout;
-const { Item, Group } = Sidebar;
+const { Item, Group, GroupWithGroupSwitcher } = Sidebar;
 
 function App() {
   const onSearchEnter = useCallback((search: string, clear: () => void) => {
@@ -104,6 +111,41 @@ function App() {
             <Item target='_blank'>Financeiro</Item>
             <Item>Soluções</Item>
           </Group>
+
+          <GroupWithGroupSwitcher
+            label='Integrações'
+            options={[
+              {
+                id: 'whatsapp',
+                label: 'Whatsapp',
+                icon: <WhatsAppOutlined />,
+                items: [
+                  <Item key={'option-1-item-1'} id='sidebar-option-1-item-1'>
+                    Templates
+                  </Item>,
+                  <Item key={'option-1-item-2'} id='sidebar-option-1-item-2'>
+                    Configurações
+                  </Item>
+                ]
+              },
+              {
+                id: 'email',
+                label: 'Email',
+                icon: <MailOutlined />,
+                items: [
+                  <Item key={'option-2-item-1'} id='sidebar-option-2-item-1'>
+                    Layout
+                  </Item>,
+                  <Item key={'option-2-item-2'} id='sidebar-option-2-item-2'>
+                    Templates
+                  </Item>,
+                  <Item key={'option-2-item-3'} id='sidebar-option-2-item-3'>
+                    Configurações
+                  </Item>
+                ]
+              }
+            ]}
+          />
 
           <Group label='Submenu'>
             <Item>Item 1</Item>
