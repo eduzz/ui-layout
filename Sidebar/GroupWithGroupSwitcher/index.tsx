@@ -6,7 +6,7 @@ import CollapseEffect from '../../CollapseEffect';
 import useBoolean from '../../hooks/useBoolean';
 import { cn } from '../../utils/cn';
 
-type SidebarGroupWithGroupSwitcherOption = {
+export type SidebarGroupWithGroupSwitcherOption = {
   id: string;
   label: string;
   icon?: ReactNode;
