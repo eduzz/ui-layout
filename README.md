@@ -286,7 +286,7 @@ Documentação de apoio: [Hyperflow](https://www.notion.so/eduzz/Doc-Implementa-
 | label    | `React.ReactNode` | `false`     | -      | -         |
 | tabIndex | `number`          | `false`     | -      |           |
 
-### Sidebar.SidebarGroupWithGroupSwitcher props
+### Sidebar.GroupWithGroupSwitcher props
 
 | prop      | tipo                                        | obrigatório | padrão | descrição                                                                                             |
 |-----------|---------------------------------------------|-------------|--------|-------------------------------------------------------------------------------------------------------|
