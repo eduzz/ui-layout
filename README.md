@@ -39,7 +39,7 @@ Para simplificar a escrita do código, você pode desestruturar os componentes.
 import Layout from '@eduzz/ui-layout';
 
 const { Sidebar, Topbar, Content } = Layout;
-const { Item, Group } = Sidebar;
+const { Item, Group, GroupWithGroupSwitcher } = Sidebar;
 
 function CustomLayout() {
   return (
@@ -68,7 +68,7 @@ export default CustomLayout;
 import { NavLink, useLocation } from 'react-router-dom';
 
 const { Sidebar, Topbar, Content } = Layout;
-const { Item, Group } = Sidebar;
+const { Item, Group, GroupWithGroupSwitcher } = Sidebar;
 
 function MyComponent() {
   const location = useLocation();
@@ -108,6 +108,41 @@ function MyComponent() {
 
       <Sidebar currentLocation={location.pathname}>
         <Item href='/agendamento'>Resumo</Item>
+
+        <GroupWithGroupSwitcher
+            label='Integrações'
+            options={[
+              {
+                id: 'whatsapp',
+                label: 'Whatsapp',
+                icon: <WhatsAppOutlined />,
+                items: [
+                  <Item key={'option-1-item-1'} id='sidebar-option-1-item-1'>
+                    Templates
+                  </Item>,
+                  <Item key={'option-1-item-2'} id='sidebar-option-1-item-2'>
+                    Configurações
+                  </Item>
+                ]
+              },
+              {
+                id: 'email',
+                label: 'Email',
+                icon: <MailOutlined />,
+                items: [
+                  <Item key={'option-2-item-1'} id='sidebar-option-2-item-1'>
+                    Layout
+                  </Item>,
+                  <Item key={'option-2-item-2'} id='sidebar-option-2-item-2'>
+                    Templates
+                  </Item>,
+                  <Item key={'option-2-item-3'} id='sidebar-option-2-item-3'>
+                    Configurações
+                  </Item>
+                ]
+              }
+            ]}
+          />
 
         <Group label='Agendamento'>
           <Item as={NavLink} to='/agendamento'>
@@ -250,6 +285,25 @@ Documentação de apoio: [Hyperflow](https://www.notion.so/eduzz/Doc-Implementa-
 |----------|-------------------|-------------|--------|-----------|
 | label    | `React.ReactNode` | `false`     | -      | -         |
 | tabIndex | `number`          | `false`     | -      |           |
+
+### Sidebar.GroupWithGroupSwitcher props
+
+| prop      | tipo                                        | obrigatório | padrão | descrição                                                                                             |
+|-----------|---------------------------------------------|-------------|--------|-------------------------------------------------------------------------------------------------------|
+| id        | `string`                                    | `false`     | -      | Identificador único para o elemento raiz (HTML `<li>`).                                             |
+| label     | `ReactNode`                                 | `false`     | -      | Label ou título do grupo, exibido acima das opções do seletor.                                        |
+| options   | `SidebarGroupWithGroupSwitcherOption[]`     | `true`      | -      | Array de opções que serão renderizadas no grupo. Cada opção define um conjunto de itens e atributos.   |
+| className | `string`                                    | `false`     | -      | Classe CSS adicional para customização do componente.                                               |
+
+### SidebarGroupWithGroupSwitcherOption
+
+| prop  | tipo           | obrigatório | padrão | descrição                                                                              |
+|-------|----------------|-------------|--------|----------------------------------------------------------------------------------------|
+| id    | `string`       | `true`      | -      | Identificador único da opção.                                                          |
+| label | `string`       | `true`      | -      | Texto que representa o rótulo da opção. Pode ser um nome ou título descritivo.         |
+| icon  | `ReactNode`    | `false`     | -      | Elemento opcional que pode conter um ícone ou qualquer outro elemento visual.          |
+| items | `ReactNode[]`  | `true`      | -      | Conjunto de itens (children) que serão renderizados quando a opção estiver selecionada. |
+
 
 ### Content props
 

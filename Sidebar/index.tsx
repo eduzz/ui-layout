@@ -4,6 +4,7 @@ import { useContextSelector } from 'use-context-selector';
 
 import SidebarContext, { SidebarContextType } from './context';
 import Group from './Group';
+import GroupWithGroupSwitcher from './GroupWithGroupSwitcher';
 import Item from './Item';
 import LayoutContext from '../context';
 import Overlay from '../Overlay';
@@ -67,5 +68,6 @@ const Sidebar = ({ currentLocation, children }: SidebarProps) => {
 
 export default nestedComponent(Sidebar, {
   Item,
-  Group
+  Group,
+  GroupWithGroupSwitcher
 });
