@@ -294,6 +294,8 @@ Documentação de apoio: [Hyperflow](https://www.notion.so/eduzz/Doc-Implementa-
 | label     | `ReactNode`                                 | `false`     | -      | Label ou título do grupo, exibido acima das opções do seletor.                                        |
 | options   | `SidebarGroupWithGroupSwitcherOption[]`     | `true`      | -      | Array de opções que serão renderizadas no grupo. Cada opção define um conjunto de itens e atributos.   |
 | className | `string`                                    | `false`     | -      | Classe CSS adicional para customização do componente.                                               |
+| defaultOptionId | `string `                             | `false`     | -      | Valor padrão selecionado, caso não seja informado, será utilizada a primeira opção como padrão |
+| onChangeOption | `(option: SidebarGroupWithGroupSwitcherOption) => void` | `false` | -      | Função que será chamada como callback ao alterar a opção |
 
 ### SidebarGroupWithGroupSwitcherOption
 
