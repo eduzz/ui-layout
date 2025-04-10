@@ -115,7 +115,7 @@ function App() {
             label='Integrações'
             defaultOptionId='email'
             onChangeOption={option => {
-              console.log('onChangeOptionzzzzzzzzzzzz', option);
+              // Handle option change logic here
             }}
             options={[
               {
