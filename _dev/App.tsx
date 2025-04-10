@@ -114,7 +114,7 @@ function App() {
           <GroupWithGroupSwitcher
             label='Integrações'
             defaultOptionId='email'
-            onChangeOption={option => {
+            onChangeOption={_option => {
               // Handle option change logic here
             }}
             options={[
