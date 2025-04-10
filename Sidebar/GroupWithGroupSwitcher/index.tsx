@@ -18,11 +18,17 @@ export interface SidebarGroupWithGroupSwitcherProps {
   options: SidebarGroupWithGroupSwitcherOption[];
   id?: string;
   className?: string;
+  defaultOptionId?: string;
+  onChangeOption?: (option: SidebarGroupWithGroupSwitcherOption) => void;
 }
 
 const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWithGroupSwitcherProps>(
-  ({ id, label, className, options }, ref) => {
-    const [selectedOption, setSelectedOption] = useState<SidebarGroupWithGroupSwitcherOption>(options[0]);
+  ({ id, label, className, options, defaultOptionId, onChangeOption }, ref) => {
+    defaultOptionId = defaultOptionId ?? options[0].id;
+
+    const defaultOption = options.find(option => option.id === defaultOptionId);
+
+    const [selectedOption, setSelectedOption] = useState<SidebarGroupWithGroupSwitcherOption>(defaultOption!);
     const [optionsVisible, setOptionsVisible] = useBoolean(false);
 
     return (
@@ -90,6 +96,9 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                   <li
                     onClick={() => {
                       setSelectedOption(option);
+
+                      onChangeOption?.(option);
+
                       setOptionsVisible();
                     }}
                     className={cn(

@@ -113,6 +113,10 @@ function App() {
 
           <GroupWithGroupSwitcher
             label='Integrações'
+            defaultOptionId='email'
+            onChangeOption={option => {
+              // Handle option change logic here
+            }}
             options={[
               {
                 id: 'whatsapp',
