@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef, memo, useState } from 'react';
+import { ReactNode, forwardRef, memo } from 'react';
 
 import { CaretDownFilled } from '@ant-design/icons';
 
@@ -18,17 +18,14 @@ export interface SidebarGroupWithGroupSwitcherProps {
   options: SidebarGroupWithGroupSwitcherOption[];
   id?: string;
   className?: string;
-  defaultOptionId?: string;
+  optionId: string;
   onChangeOption?: (option: SidebarGroupWithGroupSwitcherOption) => void;
 }
 
 const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWithGroupSwitcherProps>(
-  ({ id, label, className, options, defaultOptionId, onChangeOption }, ref) => {
-    defaultOptionId = defaultOptionId ?? options[0].id;
+  ({ id, label, className, options, optionId, onChangeOption }, ref) => {
+    const selectedOption = options.find(option => option.id === optionId);
 
-    const defaultOption = options.find(option => option.id === defaultOptionId);
-
-    const [selectedOption, setSelectedOption] = useState<SidebarGroupWithGroupSwitcherOption>(defaultOption!);
     const [optionsVisible, setOptionsVisible] = useBoolean(false);
 
     return (
@@ -48,7 +45,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
             <div className='uizz-layout-col-[2] uizz-layout-flex uizz-layout-min-w-0 uizz-layout-justify-between uizz-layout-truncate'>
               <span className='uizz-layout-text-ellipsis uizz-layout-whitespace-nowrap uizz-layout-break-all uizz-layout-text-sm uizz-layout-uppercase uizz-layout-tracking-[0.03em] uizz-layout-text-content-title/[0.65]'>
                 <div className='uizz-layout-flex uizz-layout-gap-1'>
-                  {selectedOption.icon && (
+                  {selectedOption?.icon && (
                     <div
                       className={cn('uizz-layout-text-xs', {
                         'uizz-layout-font-bold': optionsVisible
@@ -58,7 +55,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                     </div>
                   )}
 
-                  {selectedOption.label}
+                  {selectedOption?.label}
                 </div>
               </span>
 
@@ -90,13 +87,11 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
               </li>
 
               {options.map(option => {
-                const isSelected = selectedOption.id === option.id;
+                const isSelected = selectedOption?.id === option.id;
 
                 return (
                   <li
                     onClick={() => {
-                      setSelectedOption(option);
-
                       onChangeOption?.(option);
 
                       setOptionsVisible();
@@ -142,7 +137,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
         <ul className='uizz-layout-m-0  uizz-layout-block uizz-layout-p-0'>
           <CollapseEffect visibled={true}>
             <div className=' uizz-layout-pb-[0.7rem] [&_li]:uizz-layout-mb-0'>
-              {selectedOption.items.map(item => item)}
+              {(selectedOption?.items || []).map(item => item)}
             </div>
           </CollapseEffect>
         </ul>
