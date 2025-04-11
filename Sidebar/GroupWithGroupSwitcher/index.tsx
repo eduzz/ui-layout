@@ -1,4 +1,4 @@
-import { ReactNode, forwardRef, memo } from 'react';
+import { type ReactNode, forwardRef, memo } from 'react';
 
 import { CaretDownFilled } from '@ant-design/icons';
 
@@ -29,26 +29,26 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
     const [optionsVisible, setOptionsVisible] = useBoolean(false);
 
     return (
-      <li id={id} className={cn(className, 'uizz-layout-block uizz-layout-select-none')} ref={ref}>
+      <li id={id} className={cn(className, 'uizz:block uizz:select-none')} ref={ref}>
         <div>
           <div
             className={cn(
-              'uizz-layout-relative uizz-layout-box-border uizz-layout-grid uizz-layout-min-h-[2.2rem] uizz-layout-cursor-pointer uizz-layout-grid-cols-[1.625rem_1fr] uizz-layout-items-center uizz-layout-gap-2 uizz-layout-rounded-br-[50px] uizz-layout-rounded-tr-[50px] uizz-layout-px-4 uizz-layout-py-2 uizz-layout-leading-[1.15] uizz-layout-outline-none uizz-layout-transition-all hover:uizz-layout-bg-content-title/[0.03] active:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08] dark:active:uizz-layout-bg-content-title/[0.03]',
+              'uizz:relative uizz:box-border uizz:grid uizz:min-h-[2.2rem] uizz:cursor-pointer uizz:grid-cols-[1.625rem_1fr] uizz:items-center uizz:gap-2 uizz:rounded-br-[50px] uizz:rounded-tr-[50px] uizz:px-4 uizz:py-2 uizz:leading-[1.15] uizz:outline-hidden uizz:transition-all uizz:hover:bg-content-title/[0.03] uizz:active:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:dark:active:bg-content-title/[0.03]',
               {
-                '--active uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.08]': optionsVisible
+                '--active uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.08]': optionsVisible
               }
             )}
             onClick={setOptionsVisible}
           >
-            <div className='uizz-layout-absolute uizz-layout-left-0 uizz-layout-top-[calc(50%_-_1px)] uizz-layout-mt-[-0.5px] uizz-layout-h-px uizz-layout-w-[30px] uizz-layout-bg-content-title/[0.45] uizz-layout-opacity-30 uizz-layout-transition-[left,_background-color]' />
+            <div className='uizz:absolute uizz:left-0 uizz:top-[calc(50%-1px)] uizz:mt-[-0.5px] uizz:h-px uizz:w-[30px] uizz:bg-content-title/[0.45] uizz:opacity-30 uizz:transition-[left,background-color]' />
 
-            <div className='uizz-layout-col-[2] uizz-layout-flex uizz-layout-min-w-0 uizz-layout-justify-between uizz-layout-truncate'>
-              <span className='uizz-layout-text-ellipsis uizz-layout-whitespace-nowrap uizz-layout-break-all uizz-layout-text-sm uizz-layout-uppercase uizz-layout-tracking-[0.03em] uizz-layout-text-content-title/[0.65]'>
-                <div className='uizz-layout-flex uizz-layout-gap-1'>
+            <div className='uizz:col-2 uizz:flex uizz:min-w-0 uizz:justify-between uizz:truncate'>
+              <span className='uizz:text-ellipsis uizz:whitespace-nowrap uizz:break-all uizz:text-sm uizz:uppercase uizz:tracking-[0.03em] uizz:text-content-title/[0.65]'>
+                <div className='uizz:flex uizz:gap-1 uizz:items-center'>
                   {selectedOption?.icon && (
                     <div
-                      className={cn('uizz-layout-text-xs', {
-                        'uizz-layout-font-bold': optionsVisible
+                      className={cn('uizz:text-xs', {
+                        'uizz:font-bold': optionsVisible
                       })}
                     >
                       {selectedOption.icon}
@@ -60,7 +60,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
               </span>
 
               <CaretDownFilled
-                className='uizz-layout-ml-1'
+                className='uizz:ml-1'
                 style={{
                   fontSize: '0.8rem'
                 }}
@@ -70,17 +70,17 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
 
           <div
             className={cn(
-              'uizz-layout-z-[105] uizz-layout-ml-2 uizz-layout-box-border uizz-layout-min-h-10 uizz-layout-w-full uizz-layout-items-center uizz-layout-gap-2 uizz-layout-rounded-[0.5rem_0.5rem_0.5rem_0.5rem] uizz-layout-border-2 uizz-layout-bg-surface-default uizz-layout-px-1 uizz-layout-py-2 uizz-layout-leading-[1.15] uizz-layout-shadow-[2px_4px_12px_rgb(var(--eduzz-ui-layout-content-title)_/_0.16)] uizz-layout-outline-none uizz-layout-transition-all',
+              'uizz:z-105 uizz:ml-2 uizz:box-border uizz:min-h-10 uizz:w-full uizz:items-center uizz:gap-2 uizz:rounded-[0.5rem_0.5rem_0.5rem_0.5rem] uizz:border uizz:border-outline-default uizz:bg-surface-default uizz:px-1 uizz:py-2 uizz:leading-[1.15] uizz:shadow-[2px_4px_12px_rgba(var(--eduzz-ui-layout-content-title),0.16)] uizz:outline-hidden uizz:transition-all',
               {
-                'uizz-layout-absolute': optionsVisible,
-                'uizz-layout-hidden': !optionsVisible
+                'uizz:absolute': optionsVisible,
+                'uizz:hidden': !optionsVisible
               }
             )}
           >
-            <ul className='uizz-layout-m-0 uizz-layout-block uizz-layout-p-0'>
+            <ul className='uizz:m-0 uizz:block uizz:p-0'>
               <li
                 className={cn(
-                  'uizz-layout-group/menu uizz-layout-grid uizz-layout-gap-1 uizz-layout-px-4 uizz-layout-py-3 uizz-layout-text-sm uizz-layout-font-bold'
+                  'uizz:group/menu uizz:grid uizz:gap-1 uizz:px-4 uizz:pb-2 uizz:pt-1 uizz:text-sm uizz:font-bold'
                 )}
               >
                 {label}:
@@ -97,30 +97,29 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                       setOptionsVisible();
                     }}
                     className={cn(
-                      'uizz-layout-group/menu uizz-layout-flex uizz-layout-cursor-pointer uizz-layout-gap-1 uizz-layout-px-4 uizz-layout-py-2 hover:uizz-layout-bg-content-title/[0.03] active:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08] dark:active:uizz-layout-bg-content-title/[0.03]',
+                      'uizz:group uizz:flex uizz:cursor-pointer uizz:gap-1 uizz:px-4 uizz:py-2 uizz:items-center uizz:hover:bg-content-title/[0.03] uizz:active:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:dark:active:bg-content-title/[0.03]',
                       {
-                        '--active uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.08]':
-                          isSelected
+                        '--active uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.08]': isSelected
                       }
                     )}
                     key={`group-option-${option.id}`}
                   >
                     {option.icon && (
                       <div
-                        className={cn('uizz-layout-text-xs', {
-                          'uizz-layout-font-bold': isSelected
+                        className={cn('uizz:text-xs', {
+                          'uizz:font-bold': isSelected
                         })}
                       >
                         {option.icon}
                       </div>
                     )}
 
-                    <div className='uizz-layout-flex uizz-layout-items-center uizz-layout-justify-between'>
+                    <div className='uizz:flex uizz:items-center uizz:justify-between'>
                       <span
                         className={cn(
-                          'uizz-layout-whitespace-nowrap uizz-layout-break-all uizz-layout-text-sm uizz-layout-uppercase uizz-layout-tracking-[0.03em]',
+                          'uizz:whitespace-nowrap uizz:break-all uizz:text-sm uizz:uppercase uizz:tracking-[0.03em]',
                           {
-                            'uizz-layout-font-bold': isSelected
+                            'uizz:font-bold': isSelected
                           }
                         )}
                       >
@@ -134,11 +133,9 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
           </div>
         </div>
 
-        <ul className='uizz-layout-m-0  uizz-layout-block uizz-layout-p-0'>
+        <ul className='uizz:m-0 uizz:block uizz:p-0'>
           <CollapseEffect visibled={true}>
-            <div className=' uizz-layout-pb-[0.7rem] [&_li]:uizz-layout-mb-0'>
-              {(selectedOption?.items || []).map(item => item)}
-            </div>
+            <div className='uizz:pb-[0.7rem] uizz:[&_li]:mb-0'>{(selectedOption?.items || []).map(item => item)}</div>
           </CollapseEffect>
         </ul>
       </li>

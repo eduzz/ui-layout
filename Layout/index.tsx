@@ -1,7 +1,7 @@
-import { HTMLAttributes, useState, ReactNode, useCallback, useMemo, MemoExoticComponent } from 'react';
+import { type HTMLAttributes, useState, type ReactNode, useCallback, useMemo, type MemoExoticComponent } from 'react';
 
 import Content from '../Content';
-import LayoutContext, { LayoutContextType } from '../context';
+import LayoutContext, { type LayoutContextType } from '../context';
 import useBoolean from '../hooks/useBoolean';
 import useMode from '../hooks/useMode';
 import Sidebar from '../Sidebar';
@@ -152,8 +152,8 @@ const Layout = ({
       <style>{cssVars}</style>
 
       <div
-        className={cn('eduzz-ui-layout uizz-layout-flex uizz-layout-min-h-screen uizz-layout-w-full', className, {
-          'uizz-layout-pt-[var(--eduzz-ui-layout-topbar-height-rem)]': hasTopbar
+        className={cn('eduzz-ui-layout uizz:flex uizz:min-h-screen uizz:w-full', className, {
+          'uizz:pt-(--eduzz-ui-layout-topbar-height-rem)': hasTopbar
         })}
         {...rest}
       >

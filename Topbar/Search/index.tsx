@@ -1,11 +1,11 @@
 import {
   useCallback,
-  KeyboardEvent as ReactKeyboardEvent,
+  type KeyboardEvent as ReactKeyboardEvent,
   useEffect,
   useRef,
   memo,
   useState,
-  ChangeEvent
+  type ChangeEvent
 } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
@@ -48,11 +48,11 @@ const TopbarSearch = ({
       }
 
       if (event.key !== 'Enter') return;
-      onEnter &&
-        onEnter(input.value, () => {
-          setValue('');
-          input.blur();
-        });
+
+      onEnter?.(input.value, () => {
+        setValue('');
+        input.blur();
+      });
     },
     [disableEscape, onEnter]
   );
@@ -85,16 +85,16 @@ const TopbarSearch = ({
 
   return (
     <Portal target={container}>
-      <div className='uizz-layout-relative uizz-layout-box-border uizz-layout-hidden uizz-layout-h-10 uizz-layout-flex-1 uizz-layout-items-center uizz-layout-justify-between uizz-layout-gap-3 uizz-layout-px-2 uizz-layout-py-1 lg:uizz-layout-flex'>
+      <div className='uizz:relative uizz:box-border uizz:hidden uizz:h-10 uizz:flex-1 uizz:items-center uizz:justify-between uizz:gap-3 uizz:px-2 uizz:py-1 uizz:lg:flex'>
         <IconSearch size={20} />
         <input
           ref={inputRef}
           className={cn(
-            '[&:focus+div]:uizz-layout-outline-disabled uizz-layout-h-10 uizz-layout-flex-1 uizz-layout-border-none uizz-layout-bg-transparent uizz-layout-text-base uizz-layout-text-content-title focus-visible:uizz-layout-outline-none [&:focus+div]:uizz-layout-border-[var(--eduzz-theme-primary)] [&:hover+div]:uizz-layout-border-[var(--eduzz-theme-primary)]',
+            'uizz:[&:focus+div]:outline-disabled uizz:h-10 uizz:flex-1 uizz:border-none uizz:bg-transparent uizz:text-base uizz:text-content-title uizz:focus-visible:outline-hidden uizz:[&:focus+div]:border-(--eduzz-theme-primary) uizz:[&:hover+div]:border-(--eduzz-theme-primary)',
             {
-              '[&+div]:!uizz-layout-border-red-500 [&:focus+div]:!uizz-layout-outline-red-200 [&:hover+div]:!uizz-layout-border-red-500':
+              'uizz:[&+div]:border-red-500! uizz:[&:focus+div]:outline-red-200! uizz:[&:hover+div]:border-red-500!':
                 status === 'error',
-              '[&+div]:!uizz-layout-border-yellow-500 [&:focus+div]:!uizz-layout-outline-yellow-200 [&:hover+div]:!uizz-layout-border-yellow-500':
+              'uizz:[&+div]:border-yellow-500! uizz:[&:focus+div]:outline-yellow-200! uizz:[&:hover+div]:border-yellow-500!':
                 status === 'warning'
             }
           )}
@@ -103,9 +103,9 @@ const TopbarSearch = ({
           onChange={onChange}
           onKeyDown={disableShortcut ? undefined : onKeyDown}
         />
-        <div className='uizz-layout-pointer-events-none uizz-layout-absolute uizz-layout-inset-0 uizz-layout-rounded uizz-layout-border uizz-layout-border-solid uizz-layout-border-neutral-300 uizz-layout-outline uizz-layout-outline-0 uizz-layout-outline-offset-0 uizz-layout-outline-[rgba(var(--eduzz-theme-primary-rgb),0.3)] uizz-layout-transition dark:uizz-layout-border-neutral-700' />
+        <div className='uizz:pointer-events-none uizz:absolute uizz:inset-0 uizz:rounded uizz:border uizz:border-solid uizz:border-neutral-300 uizz:outline uizz:outline-0 uizz:outline-offset-0 uizz:outline-[rgba(var(--eduzz-theme-primary-rgb),0.3)] uizz:transition uizz:dark:border-neutral-700' />
         {disableShortcut ? undefined : (
-          <div className='uizz-layout-rounded uizz-layout-border uizz-layout-bg-gray-50 uizz-layout-px-2 uizz-layout-py-1 uizz-layout-text-xs dark:uizz-layout-bg-gray-950'>{`${
+          <div className='uizz:rounded uizz:border uizz:bg-gray-50 uizz:px-2 uizz:py-1 uizz:text-xs uizz:dark:bg-gray-950'>{`${
             isMacOS ? '⌘' : 'Ctrl'
           }+K`}</div>
         )}

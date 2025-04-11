@@ -1,6 +1,6 @@
-import { ReactNode, Suspense, useMemo, useState } from 'react';
+import { type ReactNode, Suspense, useMemo, useState } from 'react';
 
-import AppLoaderContext, { AppLoaderContextValue } from './context';
+import AppLoaderContext, { type AppLoaderContextValue } from './context';
 import Logo from './Logo';
 import { cn } from '../utils/cn';
 import errorFormatter from '../utils/errorFormatter';
@@ -39,30 +39,30 @@ const AppLoader = ({ children, logo, logoDarkMode }: AppLoaderProps) => {
 
       <section
         className={cn(
-          'uizz-layout-pointer-events-none uizz-layout-fixed uizz-layout-inset-0 uizz-layout-z-[2147483002] uizz-layout-flex uizz-layout-animate-fadeOut uizz-layout-items-center uizz-layout-justify-center uizz-layout-bg-surface-default/[0.32] uizz-layout-backdrop-blur',
-          { '!uizz-layout-pointer-events-auto !uizz-layout-animate-fadeIn': show }
+          'uizz:pointer-events-none uizz:fixed uizz:inset-0 uizz:z-2147483002 uizz:flex uizz:animate-fade-out uizz:items-center uizz:justify-center uizz:bg-surface-default/[0.32] uizz:backdrop-blur',
+          { 'uizz:pointer-events-auto! uizz:animate-fade-in!': show }
         )}
       >
         <div
           className={cn(
-            'uizz-layout-mt-[-150vh] uizz-layout-flex uizz-layout-w-[200px] uizz-layout-flex-col uizz-layout-items-center uizz-layout-justify-center uizz-layout-transition-[0s,width] uizz-layout-duration-[0.5s]',
+            'uizz:mt-[-150vh] uizz:flex uizz:w-[200px] uizz:flex-col uizz:items-center uizz:justify-center uizz:transition-[0s,width] uizz:duration-[0.5s]',
             {
-              '!uizz-layout-mt-0': show,
-              '!uizz-layout-w-[95vw]': error
+              'uizz:mt-0!': show,
+              'uizz:w-[95vw]!': error
             }
           )}
         >
           {error ? (
             <>
-              <p className='uizz-layout-text-center uizz-layout-text-lg uizz-layout-text-content-title'>
+              <p className='uizz:text-center uizz:text-lg uizz:text-content-title'>
                 Não conseguimos carregar a aplicação
-                <small className='uizz-layout-mt-1 uizz-layout-block uizz-layout-opacity-70'>{error.message}</small>
+                <small className='uizz:mt-1 uizz:block uizz:opacity-70'>{error.message}</small>
               </p>
 
               {error.tryAgain && (
                 <button
                   onClick={error.tryAgain}
-                  className='uizz-layout-mt-4 uizz-layout-h-[42px] uizz-layout-cursor-pointer uizz-layout-rounded uizz-layout-border uizz-layout-border-solid uizz-layout-border-content-disabled uizz-layout-bg-transparent uizz-layout-px-4 uizz-layout-py-2 uizz-layout-text-sm uizz-layout-text-content-title uizz-layout-text-inherit uizz-layout-transition-[0.3s] hover:uizz-layout-border-primary hover:uizz-layout-text-primary'
+                  className='uizz:mt-4 uizz:h-[42px] uizz:cursor-pointer uizz:rounded uizz:border uizz:border-solid uizz:border-content-disabled uizz:bg-transparent uizz:px-4 uizz:py-2 uizz:text-sm uizz:text-content-title uizz:transition-[0.3s] uizz:hover:border-primary uizz:hover:text-primary'
                 >
                   Tentar Novamente
                 </button>
@@ -72,10 +72,10 @@ const AppLoader = ({ children, logo, logoDarkMode }: AppLoaderProps) => {
             <>
               <Logo logo={logo} logoDarkMode={logoDarkMode} />
 
-              <div className='uizz-layout-relative uizz-layout-block uizz-layout-h-1 uizz-layout-w-full uizz-layout-overflow-hidden uizz-layout-bg-[#0d2871]/25'>
-                <div className='uizz-layout-bg-primary'>
-                  <div className='uizz-layout-absolute uizz-layout-inset-y-0 uizz-layout-left-0 uizz-layout-animate-loader uizz-layout-bg-inherit' />
-                  <div className='l uizz-layout-absolute uizz-layout-inset-y-0 uizz-layout-left-0 uizz-layout-animate-loaderShort uizz-layout-bg-inherit' />
+              <div className='uizz:relative uizz:block uizz:h-1 uizz:w-full uizz:overflow-hidden uizz:bg-[#0d2871]/25'>
+                <div className='uizz:bg-primary'>
+                  <div className='uizz:absolute uizz:inset-y-0 uizz:left-0 uizz:animate-loader uizz:bg-inherit' />
+                  <div className='l uizz:absolute uizz:inset-y-0 uizz:left-0 uizz:animate-loader-short uizz:bg-inherit' />
                 </div>
               </div>
             </>

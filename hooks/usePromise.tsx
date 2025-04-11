@@ -1,4 +1,4 @@
-import { DependencyList, useState, useEffect } from 'react';
+import { type DependencyList, useState, useEffect } from 'react';
 
 export default function usePromise<T>(
   promiseGenerator: (isSubscribed: () => boolean) => Promise<T>,

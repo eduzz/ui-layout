@@ -1,4 +1,4 @@
-import { HTMLAttributes, JSXElementConstructor, ReactNode, memo, useEffect, useMemo } from 'react';
+import { type HTMLAttributes, type JSXElementConstructor, type ReactNode, memo, useEffect, useMemo } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 
@@ -6,7 +6,7 @@ import Action from './Action';
 import Actions from './Actions';
 import Apps from './Apps';
 import Belt from './Belt';
-import TopbarContext, { TopbarContextType } from './context';
+import TopbarContext, { type TopbarContextType } from './context';
 import HyperflowSupportChat from './HyperflowSupportChat';
 import Logo from './Logo';
 import ModeSwitcher from './ModeSwitcher';
@@ -14,10 +14,10 @@ import Search from './Search';
 import UnitySupportChat from './UnitySupportChat';
 import User from './User';
 import UserMenu from './UserMenu';
+import LayoutContext from '../context';
 import UserMenuDivider from './UserMenu/Divider';
 import UserMenuItem from './UserMenu/Item';
 import UserMenuGroup from './UserMenu/ItemGroup';
-import LayoutContext from '../context';
 import IconClose from '../Icons/Close';
 import IconMenu from '../Icons/Menu';
 import { cn } from '../utils/cn';
