@@ -50,7 +50,7 @@ jobs:
         uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
-          title: "ui-tailwind-theme/${{ github.ref_name }}"
+          title: "${{ github.repository }}/${{ github.ref_name }}"
           url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           description: "❌ FAILED / Deu ruim =["
           color: 16711680
@@ -92,7 +92,7 @@ jobs:
         uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
-          title: "ui-tailwind-theme/${{ github.ref_name }}"
+          title: "${{ github.repository }}/${{ github.ref_name }}"
           url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           description: "❌ FAILED / Deu ruim =["
           color: 16711680
@@ -126,7 +126,7 @@ jobs:
         uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
         with:
           webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
-          title: "ui-tailwind-theme/${{ github.ref_name }}"
+          title: "${{ github.repository }}/${{ github.ref_name }}"
           url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           description: "🐚 DEPLOYED / Leiaultzin"
           color: 65280
