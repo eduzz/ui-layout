@@ -1,6 +1,6 @@
 {
   "name": "@eduzz/ui-layout",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "keywords": [
     "eduzz",
     "react",
@@ -47,5 +47,8 @@
     "vite": "^6.2.6",
     "vite-plugin-css-injected-by-js": "^3.5.2",
     "vite-plugin-dts": "^4.5.3"
+  },
+  "pnpm": {
+    "overrides": {}
   }
 }
