@@ -6,6 +6,7 @@ dist
 .DS_Store
 !**/tailwind.config.js
 !**/postcss.config.js
+!**/eslint.config.js
 *.map
 !scripts/*js
 .skip-release
