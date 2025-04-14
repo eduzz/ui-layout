@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 import ImageRender from './ImageRender';
 
@@ -30,19 +30,13 @@ const Logo = ({ logo, logoDarkMode }: LogoProps) => {
     <>
       <InitialStyle />
 
-      <div
-        id='ui-loader-logo'
-        className='uizz-layout-mb-5 !uizz-layout-block uizz-layout-max-h-[5.625rem] uizz-layout-w-[9.375rem]'
-      >
-        <div className='uizz-layout-w-full dark:uizz-layout-hidden'>
-          <ImageRender
-            image={logos.light}
-            className='uizz-layout-max-h-[5.625rem] uizz-layout-w-full  uizz-layout-max-w-[9.375rem]'
-          />
+      <div id='ui-loader-logo' className='uizz:mb-5 uizz:block! uizz:max-h-[5.625rem] uizz:w-[9.375rem]'>
+        <div className='uizz:w-full uizz:dark:hidden'>
+          <ImageRender image={logos.light} className='uizz:max-h-[5.625rem] uizz:w-full uizz:max-w-[9.375rem]' />
         </div>
 
-        <div className='uizz-layout-hidden uizz-layout-w-full dark:uizz-layout-block'>
-          <ImageRender image={logos.dark} className='uizz-layout-max-h-[5.625rem]  uizz-layout-max-w-[9.375rem]' />
+        <div className='uizz:hidden uizz:w-full uizz:dark:block'>
+          <ImageRender image={logos.dark} className='uizz:max-h-[5.625rem] uizz:max-w-[9.375rem]' />
         </div>
       </div>
     </>

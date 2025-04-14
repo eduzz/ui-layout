@@ -1,4 +1,4 @@
-import BaseIcon, { BaseIconProps } from './Base';
+import BaseIcon, { type BaseIconProps } from './Base';
 
 const IconMenu = ({ ...props }: BaseIconProps) => (
   <BaseIcon {...props} viewBox='0 0 16 16'>

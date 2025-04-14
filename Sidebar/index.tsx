@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useMemo } from 'react';
+import { type ReactNode, useEffect, useMemo } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 
-import SidebarContext, { SidebarContextType } from './context';
+import SidebarContext, { type SidebarContextType } from './context';
 import Group from './Group';
 import GroupWithGroupSwitcher from './GroupWithGroupSwitcher';
 import Item from './Item';
@@ -45,20 +45,20 @@ const Sidebar = ({ currentLocation, children }: SidebarProps) => {
 
   return (
     <SidebarContext.Provider value={contextValue}>
-      <div className='eduzz-ui-layout-sidebar uizz-layout-relative uizz-layout-box-border uizz-layout-h-auto uizz-layout-text-content-title xl:uizz-layout-w-[var(--eduzz-ui-layout-sidebar-width-rem)]'>
-        <Overlay visible={opened} className='xl:uizz-layout-hidden' onClick={toggleMenu} underTopbar />
+      <div className='eduzz-ui-layout-sidebar uizz:relative uizz:box-border uizz:h-auto uizz:text-content-title uizz:xl:w-(--eduzz-ui-layout-sidebar-width-rem)'>
+        <Overlay visible={opened} className='uizz:xl:hidden' onClick={toggleMenu} underTopbar />
 
         <aside
           className={cn(
-            'uizz-layout-fixed uizz-layout-inset-y-0 uizz-layout-left-[calc(var(--eduzz-ui-layout-sidebar-width-rem)*-1)] uizz-layout-z-[104] uizz-layout-inline-flex uizz-layout-w-[var(--eduzz-ui-layout-sidebar-width-rem)] uizz-layout-grow uizz-layout-flex-col uizz-layout-bg-surface-default uizz-layout-shadow-[0px_4px_8px_rgb(0_0_0_/_0.16)] uizz-layout-transition-[left,_background-color] xl:uizz-layout-left-0 xl:uizz-layout-bg-surface-subtle  xl:uizz-layout-shadow-none',
+            'uizz:fixed uizz:inset-y-0 uizz:left-[calc(var(--eduzz-ui-layout-sidebar-width-rem)*-1)] uizz:z-104 uizz:inline-flex uizz:w-(--eduzz-ui-layout-sidebar-width-rem) uizz:grow uizz:flex-col uizz:bg-surface-default uizz:shadow-[0px_4px_8px_rgb(0_0_0/0.16)] uizz:transition-[left,background-color] uizz:xl:left-0 uizz:xl:bg-surface-subtle uizz:xl:shadow-none',
             {
-              'uizz-layout-top-[var(--eduzz-ui-layout-topbar-height-rem)]': hasTopbar,
-              '!uizz-layout-left-0': opened
+              'uizz:top-(--eduzz-ui-layout-topbar-height-rem)': hasTopbar,
+              'uizz:left-0!': opened
             }
           )}
         >
-          <nav className='uizz-layout-overflow-y-auto uizz-layout-overflow-x-hidden uizz-layout-px-0 uizz-layout-pb-10 uizz-layout-pt-8 [&::-webkit-scrollbar-thumb]:uizz-layout-rounded [&::-webkit-scrollbar-thumb]:uizz-layout-bg-transparent [&::-webkit-scrollbar]:uizz-layout-w-[3px] [&::-webkit-scrollbar]:uizz-layout-bg-transparent [&:hover::-webkit-scrollbar-thumb]:uizz-layout-bg-[#e0e0e0]'>
-            <ul className='uizz-layout-m-0 uizz-layout-block uizz-layout-p-0'>{children}</ul>
+          <nav className='uizz:overflow-y-auto uizz:overflow-x-hidden uizz:px-0 uizz:pb-10 uizz:pt-8 uizz:[&::-webkit-scrollbar-thumb]:rounded uizz:[&::-webkit-scrollbar-thumb]:bg-transparent uizz:[&::-webkit-scrollbar]:w-[3px] uizz:[&::-webkit-scrollbar]:bg-transparent uizz:[&:hover::-webkit-scrollbar-thumb]:bg-[#e0e0e0]'>
+            <ul className='uizz:m-0 uizz:block uizz:p-0'>{children}</ul>
           </nav>
         </aside>
       </div>

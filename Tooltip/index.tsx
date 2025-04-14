@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 interface TooltipProps {
   title?: string | undefined;
@@ -7,9 +7,9 @@ interface TooltipProps {
 
 const Tooltip = ({ title, children }: TooltipProps) => {
   return (
-    <div className='uizz-layout-group/tooltip uizz-layout-relative'>
+    <div className='uizz:group/tooltip uizz:relative'>
       {title && (
-        <div className='uizz-layout-pointer-events-none uizz-layout-absolute uizz-layout-bottom-[-30px] uizz-layout-left-[50%] uizz-layout-translate-x-[-50%] uizz-layout-rounded-lg uizz-layout-bg-black uizz-layout-px-2 uizz-layout-py-1 uizz-layout-text-[12px] uizz-layout-text-white uizz-layout-opacity-0 uizz-layout-transition group-hover/tooltip:uizz-layout-opacity-70'>
+        <div className='uizz:pointer-events-none uizz:absolute uizz:bottom-[-30px] uizz:left-[50%] uizz:translate-x-[-50%] uizz:rounded-lg uizz:bg-black uizz:px-2 uizz:py-1 uizz:text-[12px] uizz:text-white uizz:opacity-0 uizz:transition uizz:group-hover/tooltip:opacity-70'>
           {title}
         </div>
       )}

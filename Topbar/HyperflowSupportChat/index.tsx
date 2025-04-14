@@ -1,5 +1,5 @@
 import HyperflowSupportChat from './chat';
-import { TopbarHyperflowSupportChatProps } from './types';
+import { type TopbarHyperflowSupportChatProps } from './types';
 
 const TopbarHyperflowSupportChat = ({
   accountsJwt,

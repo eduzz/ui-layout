@@ -113,7 +113,7 @@ function App() {
 
           <GroupWithGroupSwitcher
             label='Integrações'
-            defaultOptionId='email'
+            optionId='email'
             onChangeOption={_option => {
               // Handle option change logic here
             }}
@@ -162,8 +162,8 @@ function App() {
         </Sidebar>
 
         <Content>
-          <img src='https://picsum.photos/800/300' className='uizz-layout-w-full' />
-          <p className='uizz-layout-text-content-title'>Teste</p>
+          <img src='https://picsum.photos/800/300' className='uizz:w-full' />
+          <p className='uizz:text-content-title'>Teste</p>
         </Content>
       </Layout>
     </>

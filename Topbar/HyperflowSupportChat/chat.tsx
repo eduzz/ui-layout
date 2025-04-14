@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 
 import useExternalScript from './import';
-import { CurrentUser, HyperflowConfig, HyperflowParams, SupportChatProps } from './types';
+import { type CurrentUser, type HyperflowConfig, type HyperflowParams, type SupportChatProps } from './types';
 
 function getChatTokenID(currentUser: CurrentUser, hyperflowConfig: HyperflowConfig) {
   const chatUnityID = hyperflowConfig.chatUnityID;

@@ -31,20 +31,17 @@ const User = memo(() => {
   return (
     <div
       ref={wrapperMenuUser}
-      className={cn('uizz-layout-pointer-events-none uizz-layout-relative uizz-layout-z-[1100] uizz-layout-ml-2', {
-        '!uizz-layout-pointer-events-auto': hasMenu
+      className={cn('uizz:pointer-events-none uizz:relative uizz:z-1100 uizz:ml-2', {
+        'uizz:pointer-events-auto!': hasMenu
       })}
     >
       <Action
         active={hasMenu && opened}
         icon={<Avatar src={user.avatar}>{user.name}</Avatar>}
-        className='[&_.eduzz-ui-layout-topbar-action-button-text]:uizz-layout-font-bold'
+        className='uizz:[&_.eduzz-ui-layout-topbar-action-button-text]:font-bold'
         right={
           hasMenu && (
-            <IconCaretDown
-              size={16}
-              className={cn('uizz-layout-hidden  md:uizz-layout-inline-block', { 'rotate-180': opened })}
-            />
+            <IconCaretDown size={16} className={cn('uizz:hidden uizz:md:inline-block', { 'rotate-180': opened })} />
           )
         }
         label={user.name}

@@ -1,4 +1,4 @@
-import { SVGAttributes, forwardRef } from 'react';
+import { type SVGAttributes, forwardRef } from 'react';
 
 export type IconSizes = 'sm' | 'md' | 'lg';
 

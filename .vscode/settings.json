@@ -1,58 +1,42 @@
 {
-  "[css]": {
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.formatOnType": true
-  },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
   },
-  "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
-  "editor.formatOnType": false,
-  "editor.quickSuggestions": {
-    "strings": true
-  },
-  "editor.rulers": [
-    {
-      "color": "#fd3e3e78",
-      "column": 120
-    }
-  ],
   "eslint.validate": [
     "javascript",
     "javascriptreact",
     "typescript",
     "typescriptreact"
   ],
+  "eslint.format.enable": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "editor.formatOnType": false,
+  "typescript.validate.enable": true,
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    {
+      "color": "#fd3e3e78",
+      "column": 120
+    }
+  ],
   "files.associations": {
     "*.css": "tailwindcss"
   },
   "files.exclude": {
-    "**/*.lock.json": true,
-    "**/*?.d.ts": true,
-    "**/*?.js": {
-      "when": "$(basename).ts"
-    },
-    "**/**?.js": {
-      "when": "$(basename).tsx"
-    },
-    "**/*?.css.js": true,
     "**/.DS_Store": true,
-    "**/*.map": true,
-    "**/.git": true,
     "**/.gradle/**": true,
     "**/.idea/**": true,
     "**/.svn": true,
     "**/.tmp": true,
     "**/Pods/**": true,
     "**/bin/**": true,
-    "**/build/**": true,
-    "**/dist/**": true,
-    "**/node_modules": true,
     "**/obj/**": true,
     "**/vendor/**": true,
     ".docker-data": true,
     "tsconfig.tsbuildinfo": true
-  }
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "workbench.colorCustomizations": {}
 }

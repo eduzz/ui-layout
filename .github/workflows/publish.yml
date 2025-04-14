@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - master
+      - feature*
+      - release*
+      - hotfix*
 
 concurrency: 
   group: publish-${{ github.ref }}
@@ -32,17 +35,27 @@ jobs:
       SKIP: ${{ steps.skip-release.outputs.SKIP }}
       CURRENT_VERSION: ${{ steps.current-version.outputs.CURRENT_VERSION }}
   
-  publish:
+  build:
     needs: [should-release]
     if: needs.should-release.outputs.SKIP != 'true'
-    name: Publish
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Clone
         uses: actions/checkout@v3
       - name: Node
         uses: actions/setup-node@v3
-      - name: Cache Yarn
+      - name: Discord Message on Failure
+        if: failure()
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
+        with:
+          webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          title: "${{ github.repository }}/${{ github.ref_name }}"
+          url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          description: "❌ FAILED / Deu ruim =["
+          color: 16711680
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"
+      - name: Cache 
         id: cache-nodemodules
         uses: actions/cache@v3
         with:
@@ -50,20 +63,48 @@ jobs:
           key: packages-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             packages-
-      - name: Yarn
-        if: steps.cache-nodemodules.outputs.cache-hit != 'true'
-        run: yarn install --immutable
-      - name: Setup NPM Registry
-        run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc && npm config get registry && npm whoami
+      - name: Install Pnpm
+        run: npm i -g pnpm
+      - name: Pnpm Install
+        run: pnpm install
       - name: Lint
         run: npm run lint
       - name: Build
         run: npm run build
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: ./
+
+  publish:
+    needs: [build, should-release]
+    if: github.ref == 'refs/heads/master' && needs.should-release.outputs.SKIP != 'true'
+    name: Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone
+        uses: actions/checkout@v3
+      - name: Node
+        uses: actions/setup-node@v3
+      - name: Discord Message on Failure
+        if: failure()
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
+        with:
+          webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          title: "${{ github.repository }}/${{ github.ref_name }}"
+          url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          description: "❌ FAILED / Deu ruim =["
+          color: 16711680
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
+      - name: Setup NPM Registry
+        run: echo '//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}' > ~/.npmrc && npm config get registry && npm whoami
       - name: Publish
-        run: npm publish
-      - name: Check Skip Release
-        id: skip-release
-        run: echo 'SKIP='$(cat .skip-release) >> $GITHUB_OUTPUT
+        run: npm publish ./
       - name: Create tag
         uses: actions/github-script@v3
         with:
@@ -75,5 +116,18 @@ jobs:
               ref: "refs/tags/v${{ needs.should-release.outputs.CURRENT_VERSION }}",
               sha: context.sha
             })
-    outputs:
-      SKIP: ${{ steps.skip-release.outputs.SKIP }}
+  notify:
+    needs: [should-release, build, publish]
+    if: always()
+    name: Notify
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Message on Success
+        uses: vitorvmrs/discord-send-embed@0f0cb61f7ed052734cc11765a5b2c5d0a5c3d9c2
+        with:
+          webhook-url: ${{ secrets.PI_DISCORD_WEBHOOK }}
+          title: "${{ github.repository }}/${{ github.ref_name }}"
+          url: "${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          description: "🐚 DEPLOYED / Leiaultzin"
+          color: 65280
+          footer-text: "${{ github.sha }} - ${{ github.event.head_commit.message }}"

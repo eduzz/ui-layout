@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { cn } from '../utils/cn';
 
@@ -11,9 +11,9 @@ const LayoutContent = ({ children, disablePadding }: LayoutContentProps) => {
   return (
     <div
       className={cn(
-        'eduzz-ui-layout-content uizz-layout-box-border uizz-layout-min-w-0 uizz-layout-flex-1 uizz-layout-bg-surface-subtle uizz-layout-transition',
+        'eduzz-ui-layout-content uizz:box-border uizz:min-w-0 uizz:flex-1 uizz:bg-surface-subtle uizz:transition',
         {
-          'uizz-layout-p-4 md:uizz-layout-p-8': !disablePadding
+          'uizz:p-4 uizz:md:p-8': !disablePadding
         }
       )}
     >

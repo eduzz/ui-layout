@@ -1,6 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss' prefix(uizz);
+
+@config './tailwind.config.js';
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 :root {
   --eduzz-theme-primary: #0d2772;
@@ -29,7 +47,7 @@
 }
 
 html, body {
-  @apply uizz-layout-font-sans uizz-layout-text-base uizz-layout-m-0
+  @apply uizz:font-sans uizz:text-base uizz:m-0
 }
 html:has(body[data-eduzz-theme="dark"]) {
   color-scheme: dark;

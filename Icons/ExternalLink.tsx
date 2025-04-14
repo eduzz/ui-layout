@@ -1,4 +1,4 @@
-import BaseIcon, { BaseIconProps } from './Base';
+import BaseIcon, { type BaseIconProps } from './Base';
 
 const IconExternalLink = ({ ...props }: BaseIconProps) => (
   <BaseIcon {...props}>

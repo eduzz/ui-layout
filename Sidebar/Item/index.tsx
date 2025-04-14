@@ -1,4 +1,4 @@
-import { ReactNode, ElementType, forwardRef, useEffect, createElement, memo } from 'react';
+import { type ReactNode, type ElementType, forwardRef, useEffect, createElement, memo } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 
@@ -50,26 +50,24 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
         tabIndex: tabIndex ?? 1,
         className: cn(
           className,
-          'uizz-layout-group/menu uizz-layout-mr-[5px] uizz-layout-block uizz-layout-w-full uizz-layout-select-none uizz-layout-rounded-br-[50px] uizz-layout-rounded-tr-[50px] uizz-layout-text-inherit uizz-layout-outline-none uizz-layout-outline-0 hover:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08] hover:uizz-layout-text-inherit hover:uizz-layout-outline-none focus-visible:uizz-layout-bg-content-title/[0.03] dark:focus-visible:uizz-layout-bg-content-title/[0.03] focus-visible:uizz-layout-shadow-[0_0_0_2px_#039be5_inset]',
+          'uizz:group/menu uizz:mr-[5px] uizz:block uizz:w-full uizz:select-none uizz:rounded-br-[50px] uizz:rounded-tr-[50px] uizz:text-inherit uizz:outline-hidden uizz:outline-0 uizz:hover:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:hover:text-inherit uizz:hover:outline-hidden uizz:focus-visible:bg-content-title/[0.03] uizz:dark:focus-visible:bg-content-title/[0.03] uizz:focus-visible:shadow-[0_0_0_2px_#039be5_inset]',
           {
             '--active': active,
             '--disabled': disabled
           }
         )
       },
-      <li className='uizz-layout-box-border uizz-layout-grid uizz-layout-cursor-pointer uizz-layout-grid-cols-[1.625rem_1fr] uizz-layout-items-center uizz-layout-gap-2 uizz-layout-whitespace-nowrap uizz-layout-px-4 uizz-layout-py-1 uizz-layout-leading-[1.2] uizz-layout-no-underline uizz-layout-transition-[left,_background-color] xl:uizz-layout-py-[0.07rem]'>
+      <li className='uizz:box-border uizz:grid uizz:cursor-pointer uizz:grid-cols-[1.625rem_1fr] uizz:items-center uizz:gap-2 uizz:whitespace-nowrap uizz:px-4 uizz:py-1 uizz:leading-[1.2] uizz:no-underline uizz:transition-[left,background-color] uizz:xl:py-[0.07rem]'>
         <IconBullet
-          className='uizz-layout-text-[color:var(--eduzz-theme-secondary)] uizz-layout-opacity-0 group-[.--active]/uizz-layout-menu:uizz-layout-bg-secondary group-[.--active]/menu:uizz-layout-opacity-100'
+          className='uizz:text-(color:--eduzz-theme-secondary) uizz:opacity-0 uizz:group-[.--active]/uizz-layout-menu:bg-secondary uizz:group-[.--active]/menu:opacity-100'
           size='md'
         />
 
-        <div className='uizz-layout-flex uizz-layout-items-center uizz-layout-justify-between'>
-          <span className='uizz-layout-col-[2] uizz-layout-min-w-0 uizz-layout-overflow-hidden uizz-layout-text-ellipsis uizz-layout-text-base uizz-layout-transition-[font-weight] group-[.--active]/menu:uizz-layout-font-bold'>
+        <div className='uizz:flex uizz:items-center uizz:justify-between'>
+          <span className='uizz:col-2 uizz:min-w-0 uizz:overflow-hidden uizz:text-ellipsis uizz:text-base uizz:transition-[font-weight] uizz:group-[.--active]/menu:font-bold'>
             {children}
           </span>
-          {isExternal && (
-            <IconExternalLink className='uizz-layout-fill-content-title/[0.88] uizz-layout-opacity-50' size={20} />
-          )}
+          {isExternal && <IconExternalLink className='uizz:fill-content-title/[0.88] uizz:opacity-50' size={20} />}
         </div>
       </li>
     );

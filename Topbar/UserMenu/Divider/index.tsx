@@ -1,6 +1,6 @@
 const UserMenuDivider = () => {
   return (
-    <hr className='uizz-layout-my-[7px] uizz-layout-w-full uizz-layout-border-0 uizz-layout-border-t uizz-layout-border-solid uizz-layout-border-t-outline-darker/[0.06] dark:uizz-layout-border-t-outline-darker/[0.10]' />
+    <hr className='uizz:my-[7px] uizz:w-full uizz:border-0 uizz:border-t uizz:border-solid uizz:border-t-outline-darker/[0.06] uizz:dark:border-t-outline-darker/[0.10]' />
   );
 };
 

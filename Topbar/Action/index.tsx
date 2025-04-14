@@ -32,7 +32,7 @@ const Action = forwardRef<HTMLDivElement, ActionProps>(
 
     return (
       <div
-        className={cn('[&_.anticon]:uizz-layout-align-text-bottom [&_.anticon]:uizz-layout-text-[20px]', className)}
+        className={cn('uizz:[&_.anticon]:align-text-bottom uizz:[&_.anticon]:text-[20px]', className)}
         onClick={onClick}
         {...rest}
         ref={ref}
@@ -41,12 +41,12 @@ const Action = forwardRef<HTMLDivElement, ActionProps>(
           <Badge count={badgeCount === 0 ? undefined : badgeCount} dot={badgeCount ? false : badgeDot}>
             <div
               className={cn(
-                'uizz-layout-mt-0.5 uizz-layout-box-border uizz-layout-flex uizz-layout-h-10 uizz-layout-min-w-[40px] uizz-layout-cursor-pointer uizz-layout-select-none uizz-layout-items-center uizz-layout-justify-center uizz-layout-gap-2 uizz-layout-rounded-[20px] uizz-layout-px-2 uizz-layout-py-0 uizz-layout-text-center uizz-layout-transition hover:uizz-layout-bg-content-title/[0.03] dark:hover:uizz-layout-bg-content-title/[0.08]',
-                { 'uizz-layout-bg-content-title/[0.03] dark:uizz-layout-bg-content-title/[0.08]': active }
+                'uizz:mt-0.5 uizz:box-border uizz:flex uizz:h-10 uizz:min-w-[40px] uizz:cursor-pointer uizz:select-none uizz:items-center uizz:justify-center uizz:gap-2 uizz:rounded-[20px] uizz:px-2 uizz:py-0 uizz:text-center uizz:transition uizz:hover:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08]',
+                { 'uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.08]': active }
               )}
             >
               {icon}
-              <span className='eduzz-ui-layout-topbar-action-button-text uizz-layout-hidden uizz-layout-max-w-[150px] uizz-layout-overflow-hidden uizz-layout-text-ellipsis uizz-layout-whitespace-nowrap empty:uizz-layout-hidden md:uizz-layout-block'>
+              <span className='eduzz-ui-layout-topbar-action-button-text uizz:hidden uizz:max-w-[150px] uizz:overflow-hidden uizz:text-ellipsis uizz:whitespace-nowrap uizz:empty:hidden uizz:md:block'>
                 {label}
               </span>
               {right}

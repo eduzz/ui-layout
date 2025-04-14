@@ -1,4 +1,4 @@
-import { TopbarProps } from '../..';
+import { type TopbarProps } from '../..';
 
 declare global {
   interface Window {

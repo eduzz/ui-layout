@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { type ReactNode } from 'react';
 
 import { cn } from '../utils/cn';
 
@@ -10,7 +10,7 @@ export interface CollapseProps {
 
 const CollapseEffect = ({ children, visibled, id }: CollapseProps) => {
   return (
-    <div id={id} className={cn('uizz-layout-h-0 uizz-layout-overflow-hidden', { '!uizz-layout-h-auto': visibled })}>
+    <div id={id} className={cn('uizz:h-0 uizz:overflow-hidden', { 'uizz:h-auto!': visibled })}>
       {children}
     </div>
   );

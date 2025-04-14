@@ -1,4 +1,4 @@
-import { ElementType, ReactNode, forwardRef, useCallback, MouseEvent } from 'react';
+import { type ElementType, type ReactNode, forwardRef, useCallback, type MouseEvent } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 
@@ -30,8 +30,11 @@ const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
 
     const handleClick = useCallback(
       (e: MouseEvent) => {
-        onClick && onClick(e);
-        !preventClose && close();
+        onClick?.(e);
+
+        if (!preventClose) {
+          close();
+        }
       },
       [close, onClick, preventClose]
     );
@@ -43,12 +46,12 @@ const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
         onClick={handleClick}
         className={cn(
           className,
-          'uizz-layout-flex uizz-layout-w-full uizz-layout-cursor-pointer uizz-layout-items-center uizz-layout-gap-2 uizz-layout-rounded-md uizz-layout-border-none uizz-layout-bg-transparent uizz-layout-px-4 uizz-layout-py-2 uizz-layout-text-inherit uizz-layout-transition hover:uizz-layout-bg-content-title/[0.03] disabled:uizz-layout-cursor-not-allowed disabled:uizz-layout-opacity-25 dark:hover:uizz-layout-bg-content-title/[0.08] [&>.anticon]:uizz-layout-text-[20px] [&>svg]:uizz-layout-mr-[5px] [&>svg]:uizz-layout-w-6'
+          'uizz:flex uizz:w-full uizz:cursor-pointer uizz:items-center uizz:gap-2 uizz:rounded-md uizz:border-none uizz:bg-transparent uizz:px-4 uizz:py-2 uizz:text-inherit uizz:transition uizz:hover:bg-content-title/[0.03] uizz:disabled:cursor-not-allowed uizz:disabled:opacity-25 uizz:dark:hover:bg-content-title/[0.08] uizz:[&>.anticon]:text-[20px] uizz:[&>svg]:mr-[5px] uizz:[&>svg]:w-6'
         )}
         disabled={disabled}
       >
         {icon}
-        <span className='uizz-layout-max-w-[235px] uizz-layout-overflow-hidden uizz-layout-text-ellipsis uizz-layout-whitespace-nowrap uizz-layout-text-base'>
+        <span className='uizz:max-w-[235px] uizz:overflow-hidden uizz:text-ellipsis uizz:whitespace-nowrap uizz:text-base'>
           {children}
         </span>
       </button>
@@ -56,7 +59,7 @@ const UserMenuItem = forwardRef<HTMLButtonElement, UserMenuItemProps>(
 
     if (Tag) {
       content = (
-        <Tag id={id} {...rest} className='uizz-layout-text-inherit hover:uizz-layout-text-inherit'>
+        <Tag id={id} {...rest} className='uizz:text-inherit uizz:hover:text-inherit'>
           {content}
         </Tag>
       );

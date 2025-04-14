@@ -1,4 +1,4 @@
-import { HTMLAttributes, memo, useRef } from 'react';
+import { type HTMLAttributes, memo, useRef } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 

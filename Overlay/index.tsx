@@ -1,4 +1,4 @@
-import { HTMLAttributes, ReactNode, MouseEventHandler, useEffect } from 'react';
+import { type HTMLAttributes, type ReactNode, type MouseEventHandler, useEffect } from 'react';
 
 import useScrollBlock from '../hooks/useScrollBlock';
 import { cn } from '../utils/cn';
@@ -32,10 +32,10 @@ const Overlay = ({ visible, children, underTopbar, className, ...rest }: Overlay
       tabIndex={-1}
       className={cn(
         className,
-        'uizz-layout-invisible uizz-layout-fixed uizz-layout-inset-0 uizz-layout-z-[106] uizz-layout-h-screen uizz-layout-w-screen uizz-layout-bg-content-negative/[0.32] uizz-layout-opacity-0 uizz-layout-backdrop-blur uizz-layout-transition',
+        'uizz:invisible uizz:fixed uizz:inset-0 uizz:z-106 uizz:h-screen uizz:w-screen uizz:bg-content-negative/[0.32] uizz:opacity-0 uizz:backdrop-blur uizz:transition',
         {
-          '!uizz-layout-visible uizz-layout-opacity-100': visible,
-          '!uizz-layout-z-[104]': underTopbar
+          'uizz:visible! uizz:opacity-100': visible,
+          'uizz:z-104!': underTopbar
         }
       )}
       {...rest}

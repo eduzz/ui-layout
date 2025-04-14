@@ -1,8 +1,8 @@
-import { ReactNode, memo, useCallback, useMemo, useRef, useState } from 'react';
+import { type ReactNode, memo, useCallback, useMemo, useRef, useState } from 'react';
 
 import { useContextSelector } from 'use-context-selector';
 
-import TopbarActionsContext, { TopbarActionsContextType } from './context';
+import TopbarActionsContext, { type TopbarActionsContextType } from './context';
 import useBoolean from '../../hooks/useBoolean';
 import useClickOutside from '../../hooks/useClickOutside';
 import IconChevronLeft from '../../Icons/ChevronLeft';

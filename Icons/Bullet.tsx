@@ -1,4 +1,4 @@
-import BaseIcon, { BaseIconProps } from './Base';
+import BaseIcon, { type BaseIconProps } from './Base';
 
 const IconBullet = ({ ...props }: BaseIconProps) => (
   <BaseIcon {...props}>

@@ -1,8 +1,8 @@
 import AppLoader from './AppLoader';
 import Content from './Content';
 import Layout from './Layout';
-import Sidebar, { SidebarProps as SidebarPropsExport } from './Sidebar';
-import Topbar, { TopbarProps as TopbarPropsExport } from './Topbar';
+import Sidebar, { type SidebarProps as SidebarPropsExport } from './Sidebar';
+import Topbar, { type TopbarProps as TopbarPropsExport } from './Topbar';
 
 import './index.css';
 
