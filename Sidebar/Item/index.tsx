@@ -50,7 +50,7 @@ const SidebarItem = forwardRef<HTMLElement, SidebarItemProps>(
         tabIndex: tabIndex ?? 1,
         className: cn(
           className,
-          'uizz:group/menu uizz:mr-[5px] uizz:block uizz:w-full uizz:select-none uizz:rounded-br-[50px] uizz:rounded-tr-[50px] uizz:text-inherit uizz:outline-hidden uizz:outline-0 uizz:hover:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:hover:text-inherit uizz:hover:outline-hidden uizz:focus-visible:bg-content-title/[0.03] uizz:dark:focus-visible:bg-content-title/[0.03] uizz:focus-visible:shadow-[0_0_0_2px_#039be5_inset]',
+          'uizz:group/menu uizz:mr-[5px] uizz:block uizz:w-full uizz:select-none uizz:rounded-br-[50px] uizz:rounded-tr-[50px] uizz:text-content-title uizz:outline-hidden uizz:outline-0 uizz:hover:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:hover:text-inherit uizz:hover:outline-hidden uizz:focus-visible:bg-content-title/[0.03] uizz:dark:focus-visible:bg-content-title/[0.03] uizz:focus-visible:shadow-[0_0_0_2px_#039be5_inset]',
           {
             '--active': active,
             '--disabled': disabled
