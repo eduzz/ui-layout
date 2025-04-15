@@ -90,7 +90,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
                 className='uizz:m-auto uizz:mb-2 uizz:block uizz:max-h-10 uizz:max-w-[2.5rem] uizz:group-[.--expanded]/apps:max-h-[1.50rem] uizz:group-[.--expanded]/apps:max-w-[1.50rem] uizz:sm:group-[.--expanded]/apps:max-h-[3.1rem] uizz:sm:group-[.--expanded]/apps:max-w-[3.1rem]'
               />
 
-              <p className='uizz:m-0 uizz:text-center uizz:text-sm uizz:leading-normal uizz:group-[.--expanded]/apps:text-left uizz:group-[.--expanded]/apps:text-base'>
+              <p className='uizz:m-0 uizz:text-center uizz:text-sm uizz:leading-normal uizz:group-[.--expanded]/apps:text-left uizz:group-[.--expanded]/apps:text-base uizz:mb-0!'>
                 {app.label}
               </p>
               <p className='uizz:col-span-2 uizz:m-0 uizz:mt-0.5 uizz:hidden uizz:overflow-hidden uizz:text-base uizz:leading-normal uizz:text-content-title/[0.45] uizz:opacity-80 uizz:group-[.--expanded]/apps:block uizz:sm:col-span-1 uizz:sm:col-start-2'>
