@@ -76,7 +76,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
           return (
             <a
               className={cn(
-                'uizz:box-border uizz:block uizz:w-full uizz:cursor-pointer uizz:grid-cols-[2rem_1fr] uizz:grid-rows-[1.5rem_auto] uizz:gap-1 uizz:rounded uizz:border-gray-200 uizz:px-2 uizz:py-4 uizz:text-inherit uizz:no-underline uizz:visited:text-inherit uizz:hover:bg-content-title/[0.03] uizz:hover:text-inherit uizz:group-[.--expanded]/apps:grid uizz:group-[.--expanded]/apps:border-b uizz:group-[.--expanded]/apps:p-4 uizz:dark:border-neutral-800 uizz:dark:hover:bg-content-title/[0.06] uizz:sm:grid-cols-[4rem_1fr] uizz:sm:group-[.--expanded]/apps:border',
+                'uizz:box-border uizz:block uizz:w-full uizz:cursor-pointer uizz:grid-cols-[2rem_1fr] uizz:grid-rows-[1.5rem_auto] uizz:gap-1 uizz:rounded uizz:border-gray-200 uizz:px-2 uizz:py-4 uizz:no-underline uizz:visited:text-inherit uizz:hover:bg-content-title/[0.03] uizz:hover:text-inherit uizz:group-[.--expanded]/apps:grid uizz:group-[.--expanded]/apps:border-b uizz:group-[.--expanded]/apps:p-4 uizz:dark:border-neutral-800 uizz:text-content-caption uizz:dark:hover:bg-content-title/[0.06] uizz:sm:grid-cols-[4rem_1fr] uizz:sm:group-[.--expanded]/apps:border',
                 isCurrent && 'uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.06]'
               )}
               key={app.application}

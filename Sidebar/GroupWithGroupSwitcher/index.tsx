@@ -47,7 +47,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                 <div className='uizz:flex uizz:gap-1 uizz:items-center'>
                   {selectedOption?.icon && (
                     <div
-                      className={cn('uizz:text-xs', {
+                      className={cn({
                         'uizz:font-bold': optionsVisible
                       })}
                     >
@@ -106,7 +106,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                   >
                     {option.icon && (
                       <div
-                        className={cn('uizz:text-xs', {
+                        className={cn('uizz:text-xs uizz:leading-none', {
                           'uizz:font-bold': isSelected
                         })}
                       >
