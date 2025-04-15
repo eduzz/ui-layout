@@ -76,8 +76,8 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
           return (
             <a
               className={cn(
-                'uizz:box-border uizz:block uizz:w-full uizz:cursor-pointer uizz:grid-cols-[2rem_1fr] uizz:grid-rows-[1.5rem_auto] uizz:gap-1 uizz:rounded uizz:border-gray-200 uizz:px-2 uizz:py-4 uizz:no-underline uizz:visited:text-inherit uizz:hover:bg-content-title/[0.03] uizz:hover:text-inherit uizz:group-[.--expanded]/apps:grid uizz:group-[.--expanded]/apps:border-b uizz:group-[.--expanded]/apps:p-4 uizz:dark:border-neutral-800 uizz:text-content-caption! uizz:dark:hover:bg-content-title/[0.06] uizz:sm:grid-cols-[4rem_1fr] uizz:sm:group-[.--expanded]/apps:border',
-                isCurrent && 'uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.06]'
+                'uizz:box-border uizz:block uizz:w-full uizz:cursor-pointer uizz:grid-cols-[2rem_1fr] uizz:grid-rows-[1.5rem_auto] uizz:gap-1 uizz:rounded uizz:border-gray-200 uizz:px-2 uizz:py-4 uizz:no-underline uizz:visited:text-inherit uizz:hover:bg-content-title/[0.03]! uizz:hover:text-inherit uizz:group-[.--expanded]/apps:grid uizz:group-[.--expanded]/apps:border-b uizz:group-[.--expanded]/apps:p-4 uizz:dark:border-neutral-800 uizz:text-content-caption! uizz:dark:hover:bg-content-title/[0.06]! uizz:sm:grid-cols-[4rem_1fr] uizz:sm:group-[.--expanded]/apps:border',
+                isCurrent && 'uizz:bg-content-title/[0.03]! uizz:dark:bg-content-title/[0.06]!'
               )}
               key={app.application}
               href={isCurrent ? undefined : addModeToSearchParams(app.url, mode)}
@@ -90,10 +90,10 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
                 className='uizz:m-auto uizz:mb-2 uizz:block uizz:max-h-10 uizz:max-w-[2.5rem] uizz:group-[.--expanded]/apps:max-h-[1.50rem] uizz:group-[.--expanded]/apps:max-w-[1.50rem] uizz:sm:group-[.--expanded]/apps:max-h-[3.1rem] uizz:sm:group-[.--expanded]/apps:max-w-[3.1rem]'
               />
 
-              <p className='uizz:m-0 uizz:text-center uizz:text-sm uizz:leading-normal uizz:group-[.--expanded]/apps:text-left uizz:group-[.--expanded]/apps:text-base'>
+              <p className='uizz:m-0 uizz:text-center uizz:text-sm uizz:leading-normal uizz:group-[.--expanded]/apps:text-left uizz:group-[.--expanded]/apps:text-base uizz:mb-0!'>
                 {app.label}
               </p>
-              <p className='uizz:col-span-2 uizz:m-0 uizz:mt-0.5 uizz:hidden uizz:overflow-hidden uizz:text-base uizz:leading-normal uizz:text-content-title/[0.45] uizz:opacity-80 uizz:group-[.--expanded]/apps:block uizz:sm:col-span-1 uizz:sm:col-start-2'>
+              <p className='uizz:col-span-2 uizz:m-0 uizz:mt-0.5 uizz:hidden uizz:overflow-hidden uizz:text-base uizz:leading-normal uizz:text-content-title/[0.45] uizz:opacity-80 uizz:group-[.--expanded]/apps:block uizz:sm:col-span-1 uizz:sm:col-start-2 uizz:mb-0!'>
                 {app.description}
               </p>
             </a>
