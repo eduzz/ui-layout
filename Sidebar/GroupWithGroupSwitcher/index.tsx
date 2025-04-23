@@ -42,8 +42,8 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
           >
             <div className='uizz:absolute uizz:left-0 uizz:top-[calc(50%-1px)] uizz:mt-[-0.5px] uizz:h-px uizz:w-[30px] uizz:bg-content-title/[0.45] uizz:opacity-30 uizz:transition-[left,background-color]' />
 
-            <div className='uizz:col-2 uizz:flex uizz:min-w-0 uizz:justify-between uizz:truncate'>
-              <span className='uizz:text-ellipsis uizz:whitespace-nowrap uizz:break-all uizz:text-sm uizz:uppercase uizz:tracking-[0.03em] uizz:text-content-title/[0.65]'>
+            <div className='uizz:col-2 uizz:w-full uizz:flex uizz:min-w-0 uizz:justify-between'>
+              <span className='uizz:overflow-hidden uizz:text-sm uizz:uppercase uizz:tracking-[0.03em] uizz:text-content-title/[0.65] flex-1'>
                 <div className='uizz:flex uizz:gap-1 uizz:items-center'>
                   {selectedOption?.icon && (
                     <div
@@ -54,13 +54,14 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                       {selectedOption.icon}
                     </div>
                   )}
-
-                  {selectedOption?.label}
+                  <div className='uizz:truncate' title={selectedOption?.label}>
+                    {selectedOption?.label}
+                  </div>
                 </div>
               </span>
 
               <CaretDownFilled
-                className='uizz:ml-1'
+                className='uizz:ml-1 uizz:w-fit uizz:shrink-0'
                 style={{
                   fontSize: '0.8rem'
                 }}
@@ -97,7 +98,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                       setOptionsVisible();
                     }}
                     className={cn(
-                      'uizz:group uizz:flex uizz:cursor-pointer uizz:gap-1 uizz:px-4 uizz:py-2 uizz:items-center uizz:hover:bg-content-title/[0.03] uizz:active:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:dark:active:bg-content-title/[0.03]',
+                      'uizz:group uizz:flex uizz:cursor-pointer uizz:gap-1 uizz:px-4 uizz:py-2 uizz:items-center uizz:hover:bg-content-title/[0.03] uizz:active:bg-content-title/[0.03] uizz:dark:hover:bg-content-title/[0.08] uizz:dark:active:bg-content-title/[0.03] uizz:w-full',
                       {
                         '--active uizz:bg-content-title/[0.03] uizz:dark:bg-content-title/[0.08]': isSelected
                       }
@@ -106,7 +107,7 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                   >
                     {option.icon && (
                       <div
-                        className={cn('uizz:text-xs uizz:leading-none', {
+                        className={cn('uizz:text-xs uizz:shrink-0 uizz:leading-none', {
                           'uizz:font-bold': isSelected
                         })}
                       >
@@ -114,10 +115,13 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
                       </div>
                     )}
 
-                    <div className='uizz:flex uizz:items-center uizz:justify-between'>
+                    <div
+                      title={option.label}
+                      className='uizz:flex uizz:flex-1 uizz:items-center uizz:justify-between uizz:overflow-hidden'
+                    >
                       <span
                         className={cn(
-                          'uizz:whitespace-nowrap uizz:break-all uizz:text-sm uizz:uppercase uizz:tracking-[0.03em]',
+                          'uizz:whitespace-nowrap uizz:break-all uizz:text-sm uizz:uppercase uizz:tracking-[0.03em] uizz:truncate',
                           {
                             'uizz:font-bold': isSelected
                           }
@@ -135,7 +139,9 @@ const SidebarGroupWithGroupSwitcher = forwardRef<HTMLLIElement, SidebarGroupWith
 
         <ul className='uizz:m-0 uizz:block uizz:p-0'>
           <CollapseEffect visibled={true}>
-            <div className='uizz:pb-[0.7rem] uizz:[&_li]:mb-0'>{(selectedOption?.items || []).map(item => item)}</div>
+            <div className='uizz:pb-[0.7rem] uizz:[&_li]:mb-0 uizz:w-full'>
+              {(selectedOption?.items || []).map(item => item)}
+            </div>
           </CollapseEffect>
         </ul>
       </li>
