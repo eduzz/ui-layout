@@ -20,11 +20,22 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
   const [expanded, toggleExpanded, , closeExpanded] = useBoolean();
   const mode = useContextSelector(LayoutContext, context => context.layout.mode);
 
-  const addModeToSearchParams = useCallback((url: string, currentMode: 'dark' | 'light') => {
-    const newURL = new URL(url);
-    newURL.searchParams.set('eduzzMode', currentMode);
-    return newURL.href;
-  }, []);
+  const buildRedirectUrl = useCallback(
+    ({ url }: TopbarApplication) => {
+      const params = new URLSearchParams({
+        utm_source: 'topbar',
+        utm_medium: 'app-dropdown',
+        ref: currentApplication ?? '',
+        eduzzMode: mode
+      });
+
+      const redirectUrl = new URL(url);
+      redirectUrl.search = params.toString();
+
+      return redirectUrl.toString();
+    },
+    [currentApplication, mode]
+  );
 
   useEffect(() => {
     const oldValue = document.body.style.overflow;
@@ -80,7 +91,7 @@ const AppsDropdown = memo<AppsDropdownProps>(({ currentApplication, applications
                 isCurrent && 'uizz:bg-content-title/[0.03]! uizz:dark:bg-content-title/[0.06]!'
               )}
               key={app.application}
-              href={isCurrent ? undefined : addModeToSearchParams(app.url, mode)}
+              href={isCurrent ? undefined : buildRedirectUrl(app)}
               rel='noopener noreferrer'
               target='_blank'
               onClick={isCurrent ? onClose : undefined}
