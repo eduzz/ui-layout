@@ -15,7 +15,7 @@ export interface SidebarGroupProps {
 
 const SidebarGroup = forwardRef<HTMLLIElement, SidebarGroupProps>(
   ({ id, children, label, tabIndex, className }, ref) => {
-    const [isExpanded, toogleExpanded, trueExpanded] = useBoolean(true);
+    const [isExpanded, toogleExpanded, trueExpanded] = useBoolean(false);
 
     const contextValue = useMemo<SidebarGroupContextType>(() => {
       return { onItemActive: trueExpanded };

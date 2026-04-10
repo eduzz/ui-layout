@@ -20,6 +20,12 @@ export type TopbarApplication = HTMLAttributes<HTMLDivElement> & {
   url: string;
 };
 
+export type TopbarApplicationCategory = {
+  title: string;
+  description: string;
+  apps: TopbarApplication[];
+};
+
 type TopbarAppsProps = {
   id?: string;
 };
@@ -36,13 +42,13 @@ const getEnvironment = (): 'prod' | 'dev' | 'qa' => {
 
 const getApplicationList = async () => {
   const fileName = {
-    prod: 'applications.json',
-    dev: 'applications_dev.json',
-    qa: 'applications_qa.json'
+    prod: 'categorized_applications.json',
+    dev: 'categorized_applications_dev.json',
+    qa: 'categorized_applications_qa.json'
   }[getEnvironment()];
 
   const request = await fetch(`https://cdn.eduzzcdn.com/topbar/${fileName}`);
-  return (await request.json()) as TopbarApplication[];
+  return (await request.json()) as TopbarApplicationCategory[];
 };
 
 const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
@@ -53,12 +59,23 @@ const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
   const wrapperDropdownRef = useRef<HTMLDivElement>(null);
 
   const [applications] = usePromise(async () => {
-    const applications = await getApplicationList();
+    const applicationsCategories = await getApplicationList();
 
-    return applications.filter(app => {
-      if (!app.beta) return true;
-      if (isSupport) return true;
-      return app.application === currentApplication;
+    return applicationsCategories.map(category => {
+      return {
+        ...category,
+        apps: category.apps.filter(app => {
+          if (!app.beta) {
+            return true;
+          }
+
+          if (isSupport) {
+            return true;
+          }
+
+          return app.application === currentApplication;
+        })
+      };
     });
   }, [currentApplication, isSupport]);
 
@@ -74,7 +91,7 @@ const TopbarApps = memo<TopbarAppsProps>(({ id, ...rest }) => {
       <Action icon={<IconApps size={19} />} active={openedDropdown} onClick={toogleDropdown} />
 
       <Dropdown
-        applications={applications}
+        applicationsCategories={applications}
         currentApplication={currentApplication}
         opened={openedDropdown}
         onClose={closeDropdown}
