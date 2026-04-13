@@ -11,11 +11,12 @@ export interface SidebarGroupProps {
   tabIndex?: number;
   id?: string;
   className?: string;
+  defaultCollapsed?: boolean;
 }
 
 const SidebarGroup = forwardRef<HTMLLIElement, SidebarGroupProps>(
-  ({ id, children, label, tabIndex, className }, ref) => {
-    const [isExpanded, toogleExpanded, trueExpanded] = useBoolean(false);
+  ({ id, children, label, tabIndex, className, defaultCollapsed }, ref) => {
+    const [isExpanded, toogleExpanded, trueExpanded] = useBoolean(!defaultCollapsed);
 
     const contextValue = useMemo<SidebarGroupContextType>(() => {
       return { onItemActive: trueExpanded };
